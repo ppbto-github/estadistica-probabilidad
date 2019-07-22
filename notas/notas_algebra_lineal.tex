@@ -1,0 +1,271 @@
+\documentclass[11pt]{report}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{dirtytalk}
+\usepackage{amsmath}
+\usepackage{amsthm} %Para definir ambientes con \newtheorem
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\usepackage{caption} % To make fonts on figure smaller
+\captionsetup[figure]{font=small}
+\captionsetup[table]{font=small}
+
+
+%opening
+\title{Módulo 2: Estadística y probabilidad con python \newline Álgebra lineal}
+\author{David R. Montalván Hernández}
+\date{}
+
+%=========Define los ambientes a utilizar =======%
+%Define estilo para dar un salto de línea en el encabezado
+%del 'teorema'
+\newtheoremstyle{break}
+{2ex} %above space
+{2ex} %below space
+{\itshape} %Body font)
+{} %indent amount
+{\bfseries} %head font
+{:} %post head puncuation
+{\newline} %post head space
+{}
+
+\theoremstyle{break}
+%Definición
+\newtheorem{definicion}{Definición}[chapter]
+
+%Teorema
+\newtheorem{teorema}{Teorema}[chapter]
+
+%Notas importantes
+\newtheorem{nota}{Nota}[chapter]
+
+%Ejercicios
+\newtheorem{ejercicio}{Ejercicio}[chapter]
+
+%Ejemplos
+\newtheorem{ejemplo}{Ejemplo}[chapter]
+
+%Algoritmo (Utiliza el ambiente tabbing)
+\theoremstyle{break}
+\newtheorem{algoritmo}{Algoritmo}[chapter]
+%=================================================%
+
+%=================Macros===================%
+\newcommand{\mbb}[1]{$\mathbb{#1}$}
+
+\begin{document}
+\pagenumbering{Roman}
+\maketitle
+\renewcommand{\contentsname}{Contenido}
+\tableofcontents
+\renewcommand{\listfigurename}{Lista de imágenes}
+\listoffigures
+\renewcommand{\listtablename}{Lista de tablas}
+\renewcommand\tablename{Tabla}
+\renewcommand{\bibname}{Referencias}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{Capítulo}
+\listoftables
+
+\chapter{Espacios vectoriales}
+\label{capitulo:espacios-vectoriales}
+\section{Espacios vectoriales}
+\label{seccion:espacios-vectoriales}
+\pagenumbering{arabic} %Numeración árabe
+Iniciaremos estas notas repasando algunos conceptos básicos del álgebra lineal, estos conceptos son necesarios para entender el desarrollo de los temas posteriores.
+
+\begin{definicion}[Campo]
+\label{definicion:campo}
+Sea $\mathbb{F}$ un subconjunto de los números complejos $\mathbb{C}$. Decimos que $\mathbb{F}$ es un campo, si satisface las siguientes condiciones:
+
+\begin{enumerate}
+\item Si $x,y \in \mathbb{F}$, entonces $x + y \in \mathbb{F}$, $xy \in \mathbb{F}$ (cerradura bajo la suma y el producto).
+\item Los elementos $0$ y $1$ pertenecen a $\mathbb{F}$ (existencia del neutro aditivo y neutro multiplicativo).
+\item Si $x \in \mathbb{F}$, entonces $-x$ es también un elemento de $\mathbb{F}$ (existencia del inverso aditivo).
+\item Si $x \in \mathbb{F}$ y $x \neq 0$, entonces $x^{-1} \in \mathbb{F}$ (existencia del inverso multiplicativo).
+\end{enumerate}
+
+A los elementos de un campo se les llamará \textbf{números} o \textbf{escalares}.
+\end{definicion}
+
+De acuerdo a la definición \ref{definicion:campo}, los siguientes conjuntos son campos:
+\begin{itemize}
+\item El conjunto de los números reales $\mathbb{R}$.
+\item El conjunto de los números racionales $\mathbb{Q}$.
+\item El conjunto de los números complejos $\mathbb{C}$.
+\end{itemize}
+
+\begin{ejercicio}
+El conjunto de los números enteros, $\mathbb{Z}$, ¿es un campo?
+\end{ejercicio}
+
+\begin{definicion}[Espacio vectorial]
+\label{definicion:espacio-vectorial}
+Decimos que un conjunto \mbb{V} (vectores) sobre un campo \mbb{F} (escalares), es un espacio vectorial si:
+
+Existen dos operaciones definidas $(\cdot, +)$ con la propiedad de cerradura:
+\begin{enumerate}
+\item $a \cdot \bm{v} \in$ \mbb{V}, para todo $a \in \mathbb{F}, \bm{v} \in \mathbb{V}$
+\item $\bm{v} + \bm{w} \in \mathbb{V}$, para todo $ \bm{v}, \bm{w} \in \mathbb{V}$
+\end{enumerate}
+
+tales que:
+
+\begin{enumerate}[label=\alph*)]
+\item Para $\bm{u}, \bm{v}, \bm{w} \in \mathbb{V}$, se tiene que:
+$$ (\bm{u} + \bm{v}) + \bm{w} = \bm{u} + (\bm{v} + \bm{w})$$
+\item Existe un elemento $\bm{0} \in \mathbb{V}$, tal que $\bm{0} + \bm{v} = \bm{v} $ para todo $\bm{v} \in \mathbb{V}$.
+\item Para todo $\bm{v} \in \mathbb{V}$ existe un elemento $\bm{-v} \in \mathbb{V}$, tal que $\bm{v} + (\bm{-v}) = \bm{0}$.
+\item Para todo $\bm{v}, \bm{w} \in \mathbb{V}$, se tiene que $\bm{v} + \bm{w} = \bm{w} + \bm{v}$.
+\item Para todo $a \in \mathbb{F}$ y para todo $\bm{v}, \bm{w} \in \mathbb{V}$, tenemos que $a \cdot (\bm{v} + \bm{w}) = a \cdot \bm{v} + a \cdot \bm{w}$.
+\item Para todo $a,b \in \mathbb{F}$ y $\bm{v} \in \mathbb{V}$, se tiene que $a \cdot (b \cdot \bm{v}) = (ab) \cdot \bm{v}$.
+\item Para todo $a,b \in \mathbb{F}$ y $\bm{v} \in \mathbb{V}$, tenemos $(a + b) \cdot \bm{v} = a \cdot \bm{v} + b \cdot \bm{v}$.
+\item Para todo $\bm{v} \in \mathbb{V}$ y $1 \in \mathbb{F}$, tenemos que $1 \cdot \bm{v} = \bm{v}$.
+\end{enumerate}
+\end{definicion}
+
+\begin{nota}
+En la definición \ref{definicion:espacio-vectorial}, para evitar cargar la notación, escribiremos $a \cdot \bm{v}$ como $a\bm{v}$, mientras que para $\bm{v} + (\bm{-w})$ utilizaremos $\bm{v} - \bm{w}$.
+\end{nota}
+
+\begin{ejercicio}[Tarea]
+\label{ejemplo:espacio-vectorial-tuplas}
+Sea $\mathbb{V} = \mathbb{F}^n$, el conjunto de $n-$tuplas con elementos de un campo \mbb{F}. Sean $\bm{a} = (a_1,\ldots,a_n)$ y $\bm{b} = (b_1,\ldots,b_n)$ vectores de \mbb{V}, con $a_i, b_i \in \mathbb{F}$ para toda $i$.
+Si definimos $\bm{a} + \bm{b} = (a_1 + b_1, \ldots, a_n + b_n)$ y para $c \in \mathbb{F}$, $c\bm{a} = (ca_1,\ldots,ca_n)$.
+Además el elemento $\bm{0} \in \mathbb{V}$ se define como $(0,\ldots,0)$.\newline
+Demuestre que \mbb{V} es un espacio vectorial sobre el campo \mbb{F}, en particular $\mathbb{R}^n$ es un espacio vectorial sobre \mbb{R}.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que si \mbb{V} es un espacio vectorial sobre un campo \mbb{F}, entonces para todo $\bm{v} \in \mathbb{V}$ tenemos que:
+$$ 0\bm{v} = \bm{0}$$
+En donde $0$ es el elemento cero de \mbb{F} y $\bm{0}$ es el elemento cero de \mbb{V}.\newline
+Sugerencia: Sume $\bm{v}$ en el lado izquierdo de la ecuación.
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Es el conjunto $\mathbb{R}^n$, un espacio vectorial sobre el campo de los números complejos \mbb{C}?
+\end{ejercicio}
+
+\begin{definicion}[Subespacio vectorial]
+\label{definicion:subespacio-vectorial}
+Sea \mbb{V} un espacio vectorial y \mbb{W} $\subset$ \mbb{V}. Decimos que \mbb{W} es un subespacio vectorial si:
+
+\begin{enumerate}[label=\alph*)]
+\item Si $\bm{v}, \bm{w} \in \mathbb{W}$, entonces $\bm{v} + \bm{w} \in \mathbb{W}$.
+
+\item Si $\bm{v} \in \mathbb{W}$ y $c$ es un escalar, entonces $c\bm{v} \in \mathbb{W}$
+
+\item $\bm{0} \in \mathbb{W}$
+\end{enumerate}
+\end{definicion}
+
+\begin{ejercicio}
+Si $\mathbb{V} = \mathbb{R}^n$y $\mathbb{F} = \mathbb{R}$, demuestre que el conjunto de vectores en \mbb{V} cuya primera coordenada es igual a cero forma un subespacio vectorial de \mbb{V}.
+\end{ejercicio}
+
+\section{Combinaciones lineales y bases}
+\label{seccion:Combinaciones-lineales}
+\begin{definicion}[Combinación lineal de vectores]
+\label{definicion:combinacion-lineal-vectores}
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Una expresión del tipo 
+$$ a_1 \bm{v_1} + \ldots + a_n \bm{v_n}$$
+con $a_i \in \mathbb{F}, \bm{v_i} \in \mathbb{V}$ para toda $i$, es llamada una combinación lineal de $\bm{v_1}, \ldots, \bm{v_n}$.
+\end{definicion}
+
+Si todo elemento $\bm{v} \in \mathbb{V}$ se puede expresar como una combinación lineal de vectores $\bm{v_1}, \ldots, \bm{v_n}$ de \mbb{V}, es decir, si existen escalares $a_1, \ldots, a_n$ tales que
+
+$$ \bm{v} = a_1 \bm{v_1} + \ldots + a_n \bm{v_n} $$
+entonces decimos que los vectores, $\bm{v_1}, \ldots, \bm{v_n}$, \textbf{generan el espacio} \mbb{V}
+
+Para entender el concepto de base, es necesario primero definir la independencia entre un conjunto de vectores.
+
+\begin{definicion}[Dependencia lineal de vectores]
+\label{definicion:dependencia-lineal-vectores}
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F} y sea $\bm{v_1}, \ldots, \bm{v_n}$ un conjunto de vectores de \mbb{V}. Decimos que $\bm{v_1}, \ldots, \bm{v_n}$ son linealmente dependientes sobre el campo \mbb{F} si existen escalares $a_1, \ldots, a_n$ con al menos un $a_i$ distinto de cero, tales que
+
+$$a_1 \bm{v_1} + \ldots + a_n \bm{v_n} = \bm{0}$$
+en donde $\bm{0}$ es el vector cero de \mbb{V}
+\end{definicion}
+
+De acuerdo a la definición \ref{definicion:dependencia-lineal-vectores}, en un conjunto linealmente dependiente de vectores, $\bm{v_1}, \ldots, \bm{v_n}$, existe un vector $\bm{v_i}$, tal que 
+
+$$ \bm{v_i} = \sum_{j \neq i} -\dfrac{a_j}{a_i} \bm{v_j}$$
+
+De la misma forma, decimos que un conjunto de vectores, $\bm{v_1}, \ldots, \bm{v_n}$, son \textbf{linealmente independientes}, si la igualdad
+
+$$a_1 \bm{v_1} + \ldots + a_n \bm{v_n} = \bm{0}$$
+implica que $a_1, \ldots, a_n = 0$; en otras palabras, no es posible expresar algún vector $\bm{v_i}$ como combinación lineal de los demás.
+
+\begin{ejercicio}
+\label{ejercicio:Base-e}
+Demuestre que si $ \mathbb{V} = \mathbb{R}^n$ y $F = \mathbb{R}$, entonces el conjunto de vectores
+\begin{align*}
+\bm{e_1} & =  (1,0,\ldots,0) \nonumber \\ 
+\bm{e_2} & =  (0,1,\ldots,0) \nonumber \\
+ & \vdots  \nonumber \\
+\bm{e_n} & =  (0,0,\ldots,1) \nonumber \\ 
+\end{align*}
+es un conjunto linealmente independiente.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que si $\{ \bm{v_1}, \ldots, \bm{v_n} \}$ es un conjunto de vectores linealmente independiente, entonces el conjunto $\{ \bm{v_1}, \ldots, \bm{v_n}, \bm{0} \}$ es linealmente dependiente.
+Sugerencia: Primero demuestre para todo escalar $c$, $c\bm{0} = \bm{0}$.
+\end{ejercicio}
+
+\begin{definicion}[Base de un espacio vectorial]
+\label{definicion:base-de-un-espacio-vectorial}
+Decimos que un conjunto de vectores $\bm{v_1}, \ldots, \bm{v_n}$ de un espacio vectorial \mbb{V} sobre un campo \mbb{F}, forma una base de \mbb{V} si:
+
+\begin{itemize}
+\item $\bm{v_1}, \ldots, \bm{v_n}$ son linealmente independientes.
+\item $\bm{v_1}, \ldots, \bm{v_n}$ generan \mbb{V}.
+\end{itemize}
+\end{definicion}
+
+\begin{ejercicio}
+Demuestre que el conjunto de vectores del ejercicio \ref{ejercicio:Base-e} forma una base de $\mathbb{R}^n$.
+\end{ejercicio}
+
+\section{Dimensión de un espacio vectorial}
+\label{seccion:dimension-espacio}
+\begin{definicion}[Dimensión de un espacio vectorial]
+\label{definicion:dimension-espacio}
+Sea $\mathcal{B} = \{\bm{v_1},\ldots, \bm{v_n}  \}$ una base para el espacio vectorial \mbb{V}, tal que $\left| \mathcal{B} \right| = n < \infty$. Entonces decimos que la dimensión de \mbb{V}, $dim(\mathbb{V})$ es igual a $n$. En otras palabras, la dimensión de un espacio vectorial, es el número de vectores linealmente independientes, necesarios para generar dicho espacio.
+\end{definicion}
+
+Si un espacio \mbb{V} tiene una base, $\mathcal{B}$, cuya cardinalidad no es finita, decimos que la dimensión de \mbb{V} es infinita.
+Si $\mathbb{V} = \{ \bm{0} \}$, entonces decimos que la dimensión de \mbb{V} es $0$ (no existe una base que genere este espacio).
+
+\begin{ejercicio}
+Establezca las dimensiones de los siguientes espacios vectoriales:
+\begin{itemize}[label=$\bullet$]
+\item $\mathbb{R}^n$ sobre el campo $\mathbb{R}$.
+\item Recta en $\mathbb{R}^2$ que pasa por el origen.
+\item Plano en $\mathbb{R}^3$ que pasa por el origen.
+\item \mbb{Q} sobre \mbb{Z} (sugerencia:It's a trap!!!)
+\end{itemize}
+
+\end{ejercicio}
+
+
+\chapter{Matrices}
+\label{capitulo:matrices}
+
+\chapter{Productos escalares y ortogonalidad}
+\label{capitulo:productos-escalares}
+
+\chapter{Vectores propios y valores característicos}
+\label{chapter:eigen}
+
+
+\end{document}
