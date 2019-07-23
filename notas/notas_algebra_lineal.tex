@@ -253,7 +253,7 @@ Establezca las dimensiones de los siguientes espacios vectoriales:
 \item $\mathbb{R}^n$ sobre el campo $\mathbb{R}$.
 \item Recta en $\mathbb{R}^2$ que pasa por el origen.
 \item Plano en $\mathbb{R}^3$ que pasa por el origen.
-\item \mbb{Q} sobre \mbb{Z} (sugerencia:It's a trap!!!)
+\item \mbb{Q} sobre \mbb{Z} (sugerencia: It's a trap!!!)
 \end{itemize}
 
 \end{ejercicio}
@@ -274,7 +274,7 @@ a_{21} & a_{22} & \ldots & a_{2n} \\
 a_{m1} & a_{m2} & \ldots & a_{mn}
 \end{pmatrix}
 $$
-Si $n=m$, decimos que es una matriz cuadrada. Para referirnos al elemento en el renglón $i$, columna $j$; utilizaremos la notación $a_{ij}$.
+Si $n=m$, decimos que es una matriz cuadrada. Para referirnos al elemento en el renglón $i$, columna $j$ utilizaremos la notación $a_{ij}$.
 \end{definicion}
 De acuerdo a la definición \ref{definicion:matriz}, un vector renglón
 $$ \bm{a} = 
@@ -294,6 +294,7 @@ $$
 es una matriz de tamaño \matdim{n}{1}.
 
 \begin{definicion}[Matriz transpuesta]
+\label{definicion:matriz-transpuesta}
 Sea $\bm{A}$ una matriz de tamaño \matdim{m}{n}. La transpuesta de $\bm{A}$, es la matriz, $\bm{B}$, de tamaño \matdim{n}{m} tal que $b_{ij} = a_{ji}$, es decir, se intercambian renglones por columnas.
 Denotaremos a la matriz transpuesta de $\bm{A}$ como $\bm{A}^{T}$.
 \end{definicion}
@@ -312,12 +313,113 @@ obtener $\bm{A}^T$.
 
 Si una matriz $\bm{A}$ es tal que $\bm{A} = \bm{A}^T$, se dice que $\bm{A}$ es una matriz \textbf{simétrica}.
 
+\begin{definicion}[Diagonal de una matriz cuadrada]
+\label{definicion:diagonal}
+Sea $\bm{A}$ una matriz cuadrada de \matdim{n}{n}, la diagonal de $\bm{A}$ son los elementos $a_{11}, a_{22}, \ldots, a_{nn}$.
+\end{definicion}
+
 \section{Tipos especiales de matrices}
 \label{seccion:Tipos-matrices}
-%matriz cero, identidad (unidad), formas triangulares.
+\begin{definicion}[Matriz cero]
+\label{definicion:matriz-cero}
+La matriz cero se define como
+$$
+\bm{0} = 
+\begin{pmatrix}
+0 & 0 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \vdots \\
+0 & 0 & \ldots & 0
+\end{pmatrix}
+$$
+\end{definicion}
+
+\begin{definicion}[Matriz diagonal]
+\label{definicion:matriz-diagonal}
+Una matriz cuadradade \matdim{n}{n}, se dice que es una \textbf{matriz diagonal} si los únicos elementos distintos de cero son aquellos que pertenecen a su diagonal, es decir, tiene la siguiente forma:
+$$
+\begin{pmatrix}
+a_{11} & 0 & \ldots & 0 \\
+0 & a_{22} & \ldots & 0 \\
+\vdots & \vdots & \ddots & \ldots \\
+0 & 0 & \ldots & a_{nn}
+\end{pmatrix}
+$$
+
+En particular, si $a_{ii} = 1$ para toda $i$, la matriz recibe el nombre de \textbf{matriz identidad} o \textbf{matriz unitaria}
+
+$$
+\begin{pmatrix}
+1 & 0 & \ldots & 0 \\
+0 & 1 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \ldots \\
+0 & 0 & \ldots & 1
+\end{pmatrix}
+$$
+\end{definicion}
+
+\begin{definicion}[Matriz triangular]
+Se dice que una matriz cuadrada de \matdim{n}{n} es \textbf{triangular superior} si los elementos que están debajo de la diagonal son igual a cero, es decir, $a_{ij} = 0$ para $i > j$.
+$$
+\begin{pmatrix}
+a_{11} & a_{a12} & \ldots & a_{1n} \\
+0 & a_{22} & \ldots & a_{2n} \\
+\ldots & \ldots & \ddots & \ldots \\
+0 & 0 & \ldots & a_{nn}
+\end{pmatrix}
+$$
+
+De manera similar, se dice que es \textbf{triangular inferior} si $a_{ij} = 0$ para $i < j$.
+$$
+\begin{pmatrix}
+a_{11} & 0 & \ldots & 0 \\
+a_{21} & a_{22} & \ldots & 0 \\
+\ldots & \ldots & \ddots & \ldots \\
+a_{n1} & a_{n2} & \ldots & a_{nn}
+\end{pmatrix}
+$$
+\end{definicion}
+
+\begin{ejercicio}
+¿Cuál es la dimensión del espacio de matrices de \matdim{2}{2}? De una base para este espacio.
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Cuál es la dimensión del espacio de matrices de \matdim{m}{n}? De una base para este espacio.
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Cuál es la dimensión del espacio de matrices triangulares superiores de tamaño \matdim{n}{n}?
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Cual es la dimensión del espacio de matrices simétricas de \matdim{2}{2}? De una base para este espacio.
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Cual es la dimensión del espacio de matrices simétricas de \matdim{n}{n}? De una base para este espacio.
+\end{ejercicio}
+
+\begin{ejercicio}
+¿Cuál es la dimensión del espacio formado por matrices diagonales de \matdim{n}{n}? De una base.
+\end{ejercicio}
+
 
 \section{Operaciones con matrices}
 \label{seccion:operaciones-matrices}
+
+\begin{ejercicio}
+Demuestre que para cualquier matriz cuadrada $\bm{A}$, la matriz $\bm{A} + \bm{A}^{T}$ es una matriz simétrica.
+\end{ejercicio}
+
+\begin{ejercicio}
+Si $\bm{A}$ y $\bm{B}$ son matrices de \matdim{m}{n}, demuestre que
+$$ \left( \bm{A} + \bm{B} \right) ^{T} = \bm{A}^{T} + \bm{B}^{T}.$$
+\end{ejercicio}
+
+\begin{ejercicio}
+Si $\bm{A}$ es una matriz de \matdim{m}{n} y $c$ un escalar, demuestre que 
+$$ (c\bm{A})^{T} = c\bm{A}^{T}.$$
+\end{ejercicio}
 
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
