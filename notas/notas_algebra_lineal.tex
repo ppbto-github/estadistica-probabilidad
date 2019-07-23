@@ -30,7 +30,7 @@
 \newtheoremstyle{break}
 {2ex} %above space
 {2ex} %below space
-{\itshape} %Body font)
+{} %Body font)
 {} %indent amount
 {\bfseries} %head font
 {:} %post head puncuation
@@ -60,6 +60,7 @@
 
 %=================Macros===================%
 \newcommand{\mbb}[1]{$\mathbb{#1}$}
+\newcommand{\matdim}[2]{$#1 \times #2$}
 
 \begin{document}
 \pagenumbering{Roman}
@@ -260,6 +261,63 @@ Establezca las dimensiones de los siguientes espacios vectoriales:
 
 \chapter{Matrices}
 \label{capitulo:matrices}
+\section{Definiciones básicas}
+\label{seccion:matrices-deficiones-basicas}
+\begin{definicion}[Matriz]
+\label{definicion:matriz}
+Sean \mbb{F} un campo y $n,m$ entero positivos. Una matriz de tamaño \matdim{m}{n} es un arreglo rectangular ($m$ renglones y $n$ columnas) de números en \mbb{F}
+$$
+\begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n} \\
+a_{21} & a_{22} & \ldots & a_{2n} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix}
+$$
+Si $n=m$, decimos que es una matriz cuadrada. Para referirnos al elemento en el renglón $i$, columna $j$; utilizaremos la notación $a_{ij}$.
+\end{definicion}
+De acuerdo a la definición \ref{definicion:matriz}, un vector renglón
+$$ \bm{a} = 
+\begin{pmatrix}
+a_{1} & \ldots & a_{n}
+\end{pmatrix}
+$$
+es una matriz de tamaño \matdim{1}{n}, mientras que un vector columna
+$$
+\bm{b} = 
+\begin{pmatrix}
+b_{1} \\
+\vdots \\
+b_{n}
+\end{pmatrix}
+$$
+es una matriz de tamaño \matdim{n}{1}.
+
+\begin{definicion}[Matriz transpuesta]
+Sea $\bm{A}$ una matriz de tamaño \matdim{m}{n}. La transpuesta de $\bm{A}$, es la matriz, $\bm{B}$, de tamaño \matdim{n}{m} tal que $b_{ij} = a_{ji}$, es decir, se intercambian renglones por columnas.
+Denotaremos a la matriz transpuesta de $\bm{A}$ como $\bm{A}^{T}$.
+\end{definicion}
+
+\begin{ejercicio}
+Si 
+$$
+\bm{A} = 
+\begin{pmatrix}
+2  & 1 & 0 \\
+1 & 3 & 5
+\end{pmatrix}
+$$
+obtener $\bm{A}^T$.
+\end{ejercicio}
+
+Si una matriz $\bm{A}$ es tal que $\bm{A} = \bm{A}^T$, se dice que $\bm{A}$ es una matriz \textbf{simétrica}.
+
+\section{Tipos especiales de matrices}
+\label{seccion:Tipos-matrices}
+%matriz cero, identidad (unidad), formas triangulares.
+
+\section{Operaciones con matrices}
+\label{seccion:operaciones-matrices}
 
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
