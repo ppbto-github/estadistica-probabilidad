@@ -44,6 +44,9 @@
 %Teorema
 \newtheorem{teorema}{Teorema}[chapter]
 
+%Proposición
+\newtheorem{proposicion}{Proposición}[chapter]
+
 %Notas importantes
 \newtheorem{nota}{Nota}[chapter]
 
@@ -348,6 +351,7 @@ $$
 En particular, si $a_{ii} = 1$ para toda $i$, la matriz recibe el nombre de \textbf{matriz identidad} o \textbf{matriz unitaria}
 
 $$
+\bm{I} = 
 \begin{pmatrix}
 1 & 0 & \ldots & 0 \\
 0 & 1 & \ldots & 0 \\
@@ -407,6 +411,44 @@ $$
 \section{Operaciones con matrices}
 \label{seccion:operaciones-matrices}
 
+\begin{definicion}[Suma de matrices]
+\label{definicion:suma-matrices}
+Sean $\bm{A}$ y $\bm{B}$ matrices de tamaño \matdim{m}{n}, definimos la suma $\bm{A} + \bm{B}$ como la matriz $\bm{C}$ tal que $c_{ij} = a_{ij} + b_{ij}$. En otras palabras, la suma de matrices se realiza componente por componente.
+\end{definicion}
+
+\begin{ejercicio}
+Si 
+$$
+\bm{A} = 
+\begin{pmatrix}
+1 & -1 & 0 \\
+2 & 3 & 4
+\end{pmatrix}
+$$
+
+y 
+
+$$
+\bm{B} = 
+\begin{pmatrix}
+5 & 1 & -1 \\
+2 & 1 & -1
+\end{pmatrix}
+$$
+Calcule $\bm{A} + \bm{B}$.
+\end{ejercicio}
+
+Claramente, para la matriz cero de la definición \ref{definicion:matriz-cero}, se tiene que $\bm{A} + \bm{0} = \bm{A}$.
+
+\begin{definicion}[Producto escalar]
+\label{definicion:producto-escalar}
+Sea $\bm{A}$ una matriz y $c$ un escalar, definimos la matriz $\bm{B} = c\bm{A}$ como la matriz cuya componente $b_{ij} = ca_{ij}$. Es decir, multiplicamos cada elemento de $\bm{A}$ por el escalar $c$.
+\end{definicion}
+
+\begin{ejercicio}
+Utilizando las definiciones \ref{definicion:suma-matrices} y \ref{definicion:producto-escalar}, demuestre que el espacio de matrices de tamaño \matdim{m}{n} con elementos dentro un campo \mbb{F}, es un espacio vectorial.
+\end{ejercicio}
+
 \begin{ejercicio}
 Demuestre que para cualquier matriz cuadrada $\bm{A}$, la matriz $\bm{A} + \bm{A}^{T}$ es una matriz simétrica.
 \end{ejercicio}
@@ -420,6 +462,62 @@ $$ \left( \bm{A} + \bm{B} \right) ^{T} = \bm{A}^{T} + \bm{B}^{T}.$$
 Si $\bm{A}$ es una matriz de \matdim{m}{n} y $c$ un escalar, demuestre que 
 $$ (c\bm{A})^{T} = c\bm{A}^{T}.$$
 \end{ejercicio}
+
+\begin{definicion}[Producto punto]
+\label{definicion:producto-punto}
+Sean $\bm{a} = (a_1, \ldots, a_n) $ y $\bm{b} = (b_1, \ldots, b_n) $ dos vectores renglón (matrices de tamaño \matdim{1}{n}), el \textbf{producto punto} entre $\bm{a}$ y $\bm{b}$ se define como
+
+$$ \left< \bm{a}, \bm{b} \right> = \sum_{i=1}^{n} a_{i}b_{i}  $$
+\end{definicion}
+
+\begin{proposicion}
+\label{proposicion:propiedades-producto-punto}
+El producto punto cumple lo siguiente:
+\begin{enumerate}[label=\alph*)]
+\item $ \left< \bm{a}, \bm{b} \right> = \left< \bm{b}, \bm{a} \right>$.
+\item $\left< \bm{a}, \bm{b} + \bm{c} \right> = \left< \bm{a}, \bm{b} \right> + \left< \bm{a}, \bm{c} \right> = \left< \bm{b} + \bm{c}, \bm{a} \right>$.
+\item Si $k$ es un escalar, entonces 
+$$ \left< k\bm{a}, \bm{b} \right> = k\left< \bm{a}, \bm{b} \right> = \left< \bm{a}, k\bm{b} \right>.$$
+\item Si los componentes de $\bm{a}$ son números reales, entonces
+$$\left< \bm{a}, \bm{a} \right> = \sum_{i=1}^{n}a_{i}^{2} \geq 0.$$
+\item Si $\left< \bm{a}, \bm{b} \right> = 0$ para todo $\bm{b}$, entonces $\bm{a} = (0,\ldots,0)$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{ejercicio}
+Demuestre la proposición \ref{proposicion:propiedades-producto-punto}.
+\end{ejercicio}
+
+\begin{definicion}[Producto de matrices]
+\label{definicion:producto-matrices}
+Sea $\bm{A}$ una matriz de \matdim{m}{n} y $\bm{B}$ una matriz de \matdim{n}{k}. El producto $\bm{A}\bm{B}$, se define como la matriz de tamaño \matdim{m}{k}:
+
+$$
+\begin{pmatrix}
+\left< \bm{a_1}, \bm{b_1} \right> & \left< \bm{a_1}, \bm{b_2} \right> & \ldots & \left< \bm{a_1}, \bm{b_k} \right> \\
+\left< \bm{a_2}, \bm{b_1} \right> & \left< \bm{a_2}, \bm{b_2} \right> & \ldots & \left< \bm{a_2}, \bm{b_k} \right> \\
+\vdots & \vdots & \ddots & \vdots\\
+\left< \bm{a_m}, \bm{b_1} \right> & \left< \bm{a_m}, \bm{b_2} \right> & \ldots & \left< \bm{a_m}, \bm{b_k} \right> \\
+\end{pmatrix}
+$$
+en donde $\bm{a_i}$ representa el $i-$ésimo renglón de $\bm{A}$ y $\bm{b_i}$ representa la $i-$ésima columna de $\bm{B}$.
+\end{definicion}
+
+Como se hace observa en la definición \ref{definicion:producto-matrices}, para que el producto de dos matrices esté bien definido, el número de columnas de la matriz $\bm{A}$ debe de ser igual al número de renglones de la matriz $\bm{B}$. En consecuencia, el producto de matrices \textbf{no es conmutativo}.
+
+\begin{proposicion}
+\label{proposicion:producto-matrices}
+Algunas propiedades del producto de matrices son:
+\begin{enumerate}[label=\alph*)]
+\item $\bm{A} (\bm{B} + \bm{C}) = \bm{A}\bm{B} + \bm{A}\bm{C}$.
+\item Si $k$ es un escalar 
+$$\bm{A}(k\bm{B}) = k(\bm{AB})$$
+\item $(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$.
+\item $(\bm{AB})^{T} = \bm{B}^{T} \bm{A}^{T}$ (demostrar).
+\item Si $\bm{A}$ es una matriz cuadrada, entonces $\bm{A}^{0} = \bm{I}$ y para enteros no negativos, $r$ y $s$, tenemos que $\bm{A}^{r+s} = \bm{A}^{r} \bm{A}^{s}$.
+\end{enumerate}
+\end{proposicion}
+
 
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
