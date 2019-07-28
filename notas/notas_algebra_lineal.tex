@@ -336,7 +336,10 @@ $$
 obtener $\bm{A}^T$.
 \end{ejercicio}
 
+\begin{definicion}[Matriz simétrica]
+\label{definicion:matriz-simetrica}
 Si una matriz $\bm{A}$ es tal que $\bm{A} = \bm{A}^T$, se dice que $\bm{A}$ es una matriz \textbf{simétrica}.
+\end{definicion}
 
 \begin{definicion}[Diagonal de una matriz cuadrada]
 \label{definicion:diagonal}
@@ -659,6 +662,121 @@ Sugerencia: Utilice el teorema \ref{teorema:conjuntos-maximales}.
 Suponga que se tiene un sistema lineal homogéneo y que $n = m$. Además suponga que las columnas de la matriz $\bm{A}$ son linealmente independientes. Demuestre que la única solución es la solución trivial.
 \end{ejercicio}
 
+\section{Determinantes y matrices inversas}
+\label{seccion:determinantes-inversas}
+
+\begin{definicion}[Matriz inversa]
+\label{definicion:matriz-inversa}
+Sea $\bm{A}$ una matriz cuadrada de \matdim{n}{n}. Una matriz, $\bm{B}$, de \matdim{n}{n}; se dice que es la \textbf{inversa} de $\bm{A}$ si:
+
+$$ \bm{A} \bm{B} = \bm{B} \bm{A} = \bm{I} $$
+
+en donde $\bm{I}$ es la matriz identidad de tamaño \matdim{n}{n} (ver definición \ref{definicion:matriz-diagonal}). En este caso decimos que $\bm{A}$ es \textbf{invertible} o \textbf{no singular}.
+Denotaremos a la inversa de $\bm{A}$ como $\bm{A}^{-1}$. Si una matriz no tiene inversa, decimos que es \textbf{no invertible} o \textbf{singular}.
+\end{definicion}
+
+\begin{nota}
+Es importante observar que la definición \ref{definicion:matriz-inversa} únicamente aplica para matrices cuadradas.
+\end{nota}
+
+\begin{teorema}
+\label{teorema:inversa-producto}
+Sean $\bm{A}$ y $\bm{B}$ matrices cuadradas del mismo tamaño, entonces tenemos que:
+$$ (\bm{A} \bm{B})^{-1} = \bm{B}^{-1} \bm{A}^{-1}$$
+\end{teorema}
+
+\begin{teorema}
+Si una matriz es singular, entonces al menos uno de sus renglones (o columnas) es una combinación lineal de los otros renglones (o columnas).
+\end{teorema}
+
+\begin{ejercicio}
+Demuestre que si $\bm{A}$ es una matriz invertible, entonces su inversa es única.
+\end{ejercicio}
+
+Para poder encontrar la inversa de una matriz, es necesario primero definir lo que es el determinante de una matriz.
+
+\begin{definicion}[Determinante - matriz \matdim{2}{2}]
+\label{definicion:determinante-2x2}
+Sea
+$$
+\bm{A} = 
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+$$
+una matriz de \matdim{2}{2}, el determinante de $\bm{A}$, se define como:
+
+$$det(\bm{A}) = \left| \bm{A} \right| =
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+= ad -bc.
+$$
+\end{definicion}
+
+La definición de determinante para matrices de mayor tamaño se puede definir de forma inductiva.
+
+\begin{definicion}[Determinante - matriz \matdim{n}{n}]
+\label{definicion:determinante-nxn}
+Sea $\bm{A}$ una matriz de \matdim{n}{n}, el determinante de $\bm{A}$ se define como:
+
+$$ det(\bm{A}) = a_{1j}C_{1j} + \ldots + a_{nj}C_{nj}.$$
+
+En donde $C_{ij} = (-1)^{i + j}M_{ij}$ con $M_{ij}$ el determinante obtenido al eliminar el renglón $i$ y la columna $j$ de la matriz $\bm{A}$.
+\end{definicion}
+
+\begin{ejercicio}
+Utilizando las definiciones \ref{definicion:determinante-2x2} y  \ref{definicion:determinante-nxn} calcule el determinante de la matriz
+
+$$
+\bm{A} = 
+\begin{pmatrix}
+1 & 2 & 1 & 0\\
+0 & 1 & -1 & 2 \\
+1 & 0 & 0 & 1 \\
+2 & 2 & 1 & 1
+\end{pmatrix}
+$$
+\end{ejercicio}
+
+\begin{teorema}
+Para una matriz de \matdim{n}{n} $\bm{A}$, el determinante cumple lo siguiente:
+
+\begin{enumerate}[label=\alph*)]
+\item $\bm{A}$ es  no singular si y sólo si $|\bm{A}| \neq 0$
+
+\item $|\bm{A}^{T}| = |\bm{A}|$
+
+\item $|\bm{A}^{-1}| = |\bm{A}|^{-1}$
+
+\item $|\bm{A}| = 0$ para $\bm{A}$ singular.
+
+\item $|c\bm{A}| = c^{n}|\bm{A}|$ para $c$ un escalar.
+
+\item $|\bm{A}\bm{B}| = |\bm{A}| |\bm{B}|$ con $\bm{B}$ una matriz de \matdim{n}{n}
+\end{enumerate}
+\end{teorema}
+
+\begin{teorema}
+Sea $\bm{A}$ una matriz invertible, entonces
+$$
+\bm{A}^{-1} = \dfrac{1}{|\bm{A}|} \bm{C}^{T}
+$$
+en donde 
+
+$$
+\bm{C} =
+\begin{pmatrix}
+C_{11} & C_{12} & \ldots & C_{1n} \\
+C_{21} & C_{22} & \ldots & C_{2n} \\
+\vdots & \vdots & \vdots & \vdots \\
+C_{n1} & C_{n2} & \ldots & C_{nn} \\
+\end{pmatrix}
+$$
+en donde $C_{ij} = (-1)^{i + j}M_{ij}$ con $M_{ij}$ el determinante obtenido al eliminar el renglón $i$ y la columna $j$ de la matriz $\bm{A}$.
+\end{teorema}
 
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
