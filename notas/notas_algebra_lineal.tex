@@ -43,6 +43,7 @@
 
 %Teorema
 \newtheorem{teorema}{Teorema}[chapter]
+\newtheorem*{demostracion}{Demostración}
 
 %Proposición
 \newtheorem{proposicion}{Proposición}[chapter]
@@ -140,7 +141,7 @@ $$ (\bm{u} + \bm{v}) + \bm{w} = \bm{u} + (\bm{v} + \bm{w})$$
 En la definición \ref{definicion:espacio-vectorial}, para evitar cargar la notación, escribiremos $a \cdot \bm{v}$ como $a\bm{v}$, mientras que para $\bm{v} + (\bm{-w})$ utilizaremos $\bm{v} - \bm{w}$.
 \end{nota}
 
-\begin{ejercicio}[Tarea]
+\begin{ejercicio}
 \label{ejemplo:espacio-vectorial-tuplas}
 Sea $\mathbb{V} = \mathbb{F}^n$, el conjunto de $n-$tuplas con elementos de un campo \mbb{F}. Sean $\bm{a} = (a_1,\ldots,a_n)$ y $\bm{b} = (b_1,\ldots,b_n)$ vectores de \mbb{V}, con $a_i, b_i \in \mathbb{F}$ para toda $i$.
 Si definimos $\bm{a} + \bm{b} = (a_1 + b_1, \ldots, a_n + b_n)$ y para $c \in \mathbb{F}$, $c\bm{a} = (ca_1,\ldots,ca_n)$.
@@ -250,6 +251,27 @@ Sea $\mathcal{B} = \{\bm{v_1},\ldots, \bm{v_n}  \}$ una base para el espacio vec
 Si un espacio \mbb{V} tiene una base, $\mathcal{B}$, cuya cardinalidad no es finita, decimos que la dimensión de \mbb{V} es infinita.
 Si $\mathbb{V} = \{ \bm{0} \}$, entonces decimos que la dimensión de \mbb{V} es $0$ (no existe una base que genere este espacio).
 
+Los siguientes resultados nos serán de utilidad.
+
+\begin{teorema}
+\label{teorema:conjuntos-maximales}
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Sea $\bm{v_1}, \ldots, \bm{v_m}$ una base de \mbb{V} y sea $\bm{w_1}, \ldots, \bm{w_n}$ un conjunto de elementos de \mbb{V}, supongamos que $n > m$. Entonces $\bm{w_1}, \ldots \bm{w_n}$ forman un conjunto linealmente dependiente.
+\end{teorema}
+\begin{demostracion}
+La idea de la demostración es la siguiente:
+
+Se supone que $\bm{w_1}, \ldots, \bm{w_n}$ son linealmente independientes, por lo tanto $\bm{w_i} \neq 0$, para todo $i$ y además 
+$$\bm{w_1} = a_{1}\bm{v_1} + \ldots + a_{m}\bm{v_m}$$
+con algún $a_i \neq 0$. Sin pérdida de generalidad (ya que es posible volver a numerar los $\bm{v_i}$) supongamos que $a_1 \neq 0$, tenemos entonces que existen escalares $a_{i}^{'}$ tales que:
+$$\bm{v_1} = a_{1}^{'}\bm{w_1} + a_{2}^{'}\bm{v_2} + \ldots + a_{m}^{'} \bm{v_m}$$
+Utilizando el mismo argumento para
+$$\bm{w_2} = b_{1}\bm{v_1} + \ldots + b_{m}\bm{v_m}$$
+podemos expresar $\bm{v_2}$ como una combinación lineal de $\bm{w_1}, \bm{w_2}, \bm{v_3}, \ldots, \bm{w_m}$. Continuando de la misma forma podemos expresar $\bm{v_1}, \ldots, \bm{v_m}$ como combinación de $\bm{w_1}, \ldots, \bm{w_m}$. Ya que los $\bm{v_i}$ generan \mbb{V}, se sigue que los $\bm{w_i}$ también generan este espacio y por lo tanto, como $n > m$, se tiene que existen escalares $c_i$ tales que:
+$$\bm{w_n} = c_{1}\bm{w_1} + \ldots + c_{m}\bm{w_m}$$
+con lo que llegamos a una contradicción con nuestro supuesto inicial de independencia lineal entre $\bm{w_1}, \ldots \bm{w_n}$. $\qed$
+\end{demostracion}
+
+
 \begin{ejercicio}
 Establezca las dimensiones de los siguientes espacios vectoriales:
 \begin{itemize}[label=$\bullet$]
@@ -258,8 +280,8 @@ Establezca las dimensiones de los siguientes espacios vectoriales:
 \item Plano en $\mathbb{R}^3$ que pasa por el origen.
 \item \mbb{Q} sobre \mbb{Z} (sugerencia: It's a trap!!!)
 \end{itemize}
-
 \end{ejercicio}
+
 
 
 \chapter{Matrices}
@@ -365,7 +387,7 @@ $$
 Se dice que una matriz cuadrada de \matdim{n}{n} es \textbf{triangular superior} si los elementos que están debajo de la diagonal son igual a cero, es decir, $a_{ij} = 0$ para $i > j$.
 $$
 \begin{pmatrix}
-a_{11} & a_{a12} & \ldots & a_{1n} \\
+a_{11} & a_{12} & \ldots & a_{1n} \\
 0 & a_{22} & \ldots & a_{2n} \\
 \ldots & \ldots & \ddots & \ldots \\
 0 & 0 & \ldots & a_{nn}
@@ -384,11 +406,11 @@ $$
 \end{definicion}
 
 \begin{ejercicio}
-¿Cuál es la dimensión del espacio de matrices de \matdim{2}{2}? De una base para este espacio.
+¿Cuál es la dimensión del espacio de matrices de \matdim{2}{2}? Dé una base para este espacio.
 \end{ejercicio}
 
 \begin{ejercicio}
-¿Cuál es la dimensión del espacio de matrices de \matdim{m}{n}? De una base para este espacio.
+¿Cuál es la dimensión del espacio de matrices de \matdim{m}{n}? Dé una base para este espacio.
 \end{ejercicio}
 
 \begin{ejercicio}
@@ -396,15 +418,15 @@ $$
 \end{ejercicio}
 
 \begin{ejercicio}
-¿Cual es la dimensión del espacio de matrices simétricas de \matdim{2}{2}? De una base para este espacio.
+¿Cual es la dimensión del espacio de matrices simétricas de \matdim{2}{2}? Dé una base para este espacio.
 \end{ejercicio}
 
 \begin{ejercicio}
-¿Cual es la dimensión del espacio de matrices simétricas de \matdim{n}{n}? De una base para este espacio.
+¿Cual es la dimensión del espacio de matrices simétricas de \matdim{n}{n}? Dé una base para este espacio.
 \end{ejercicio}
 
 \begin{ejercicio}
-¿Cuál es la dimensión del espacio formado por matrices diagonales de \matdim{n}{n}? De una base.
+¿Cuál es la dimensión del espacio formado por matrices diagonales de \matdim{n}{n}? Dé una base.
 \end{ejercicio}
 
 
@@ -465,7 +487,7 @@ $$ (c\bm{A})^{T} = c\bm{A}^{T}.$$
 
 \begin{definicion}[Producto punto]
 \label{definicion:producto-punto}
-Sean $\bm{a} = (a_1, \ldots, a_n) $ y $\bm{b} = (b_1, \ldots, b_n) $ dos vectores renglón (matrices de tamaño \matdim{1}{n}), el \textbf{producto punto} entre $\bm{a}$ y $\bm{b}$ se define como
+Sean $\bm{a} = (a_1, \ldots, a_n) $ y $\bm{b} = (b_1, \ldots, b_n) $ dos vectores\footnote{Aunque aquí se expresan como vectores renglón, también pueden ser considerados como vectores columna.} con entradas sobre un campo \mbb{F}, el \textbf{producto punto} entre $\bm{a}$ y $\bm{b}$ se define como
 
 $$ \left< \bm{a}, \bm{b} \right> = \sum_{i=1}^{n} a_{i}b_{i}  $$
 \end{definicion}
@@ -503,6 +525,11 @@ $$
 en donde $\bm{a_i}$ representa el $i-$ésimo renglón de $\bm{A}$ y $\bm{b_i}$ representa la $i-$ésima columna de $\bm{B}$.
 \end{definicion}
 
+\begin{ejercicio}
+Programe una función que realice la multiplicación de matrices. \newline
+Sugerencia: Programe primero una función que realice el producto punto de vectores.
+\end{ejercicio}
+
 Como se hace observa en la definición \ref{definicion:producto-matrices}, para que el producto de dos matrices esté bien definido, el número de columnas de la matriz $\bm{A}$ debe de ser igual al número de renglones de la matriz $\bm{B}$. En consecuencia, el producto de matrices \textbf{no es conmutativo}.
 
 \begin{proposicion}
@@ -515,12 +542,127 @@ $$\bm{A}(k\bm{B}) = k(\bm{AB})$$
 \item $(\bm{AB})\bm{C} = \bm{A}(\bm{BC})$.
 \item $(\bm{AB})^{T} = \bm{B}^{T} \bm{A}^{T}$ (demostrar).
 \item Si $\bm{A}$ es una matriz cuadrada, entonces $\bm{A}^{0} = \bm{I}$ y para enteros no negativos, $r$ y $s$, tenemos que $\bm{A}^{r+s} = \bm{A}^{r} \bm{A}^{s}$.
+\item El producto punto de la definición \ref{definicion:producto-punto}, puede escribirse como el producto de una matriz renglón con una matriz columna:
+
+$$
+\left< \bm{a}, \bm{b} \right>=
+\begin{pmatrix}
+a_1, \ldots , a_n
+\end{pmatrix}
+\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{pmatrix}
+$$
+En la literatura, es muy común representar al vector $\bm{a}$ como un vector columna y al vector $\bm{b}$ como un vector renglón. por lo tanto
+$$
+\left< \bm{a}, \bm{b} \right> = \bm{a}^{T} \bm{b}.
+$$
 \end{enumerate}
 \end{proposicion}
+
+\section{Sistemas de ecuaciones lineales}
+\label{section:sistemas-ecuaciones-lineales}
+
+\begin{definicion}[Sistemas de ecuaciones lineales]
+\label{definicion:sistema-ecuaciones-lineales}
+Sean \mbb{F} un campo, $\bm{A}$ una matriz de \matdim{m}{n} y $b_1, \ldots, b_m$ escalares de \mbb{F}. Ecuaciones del tipo
+$$
+\begin{array}{rcl}
+a_{11}x_1 + \ldots + a_{1n}x_n & = & b_1 \\
+a_{21}x_1 + \ldots + a_{2n}x_n & = & b_2 \\
+\vdots &  &  \\
+a_{m1}x_1 + \ldots + a_{mn}x_n & = & b_m
+\end{array}
+$$
+son llamados sistemas de ecuaciones lineales. Los elementos de la matriz $\bm{A}$ son llamados \textbf{coeficientes} y los elementos $x_1, \ldots, x_n$ \textbf{incógnitas}.
+
+Si $b_1 = b_2 = \ldots = b_m = 0$, entonces decimos que es un sistema \textbf{homogéneo} y el sistema homogéneo asociado al sistema anterior es:
+
+$$
+\begin{array}{rcl}
+a_{11}x_1 + \ldots + a_{1n}x_n & = & 0 \\
+a_{21}x_1 + \ldots + a_{2n}x_n & = & 0 \\
+\vdots &  &  \\
+a_{m1}x_1 + \ldots + a_{mn}x_n & = & 0
+\end{array}
+$$
+
+Este sistema siempre tiene una solución, conocida como \textbf{solución trivial} ¿cuál es?
+\end{definicion}
+
+Utilizando las columnas de la matriz $\bm{A}$ de la definición \ref{definicion:sistema-ecuaciones-lineales}, podemos reescribir el sistema de ecuaciones como:
+
+$$
+\begin{array}{crl}
+x_1
+\begin{pmatrix}
+a_{11} \\
+\vdots \\
+a_{m1}
+\end{pmatrix}
++ \ldots + 
+x_n
+\begin{pmatrix}
+a_{1n} \\
+\vdots \\
+a_{mn}
+\end{pmatrix}
+& = & 
+\begin{pmatrix}
+b_1 \\
+\vdots \\
+b_m
+\end{pmatrix},
+\end{array}
+$$
+o denotando a la $j-$ésima columna de $\bm{A}$ como $\bm{a_{j}}$ y al vector (columna) $(b_1, \ldots, b_m)^{T}$ como $\bm{b}$
+$$ x_1\bm{a_{1}} + \ldots + x_n \bm{a_{n}} = \bm{b}.$$
+
+En el caso de un sistema homogéneo, la existencia de una solución no trivial implica una dependencia lineal entre los vectores formados por las columnas de la matriz $\bm{A}.$
+ 
+\begin{teorema}
+\label{teorema:solucion-no-triv-sist-hom}
+Sea 
+$$
+\begin{array}{rcl}
+a_{11}x_1 + \ldots + a_{1n}x_n & = & 0 \\
+a_{21}x_1 + \ldots + a_{2n}x_n & = & 0 \\
+\vdots &  &  \\
+a_{m1}x_1 + \ldots + a_{mn}x_n & = & 0
+\end{array}
+$$
+un sistema homogéneo de ecuaciones lineales. Si $n>m$, entonces existe una solución no trivial.
+\end{teorema}
+
+\begin{teorema}
+\label{teorema:solucion-unica-sist-no-hom}
+Sea 
+$$
+\begin{array}{rcl}
+a_{11}x_1 + \ldots + a_{1n}x_n & = & b_1 \\
+a_{21}x_1 + \ldots + a_{2n}x_n & = & b_2 \\
+\vdots &  &  \\
+a_{m1}x_1 + \ldots + a_{mn}x_n & = & b_m
+\end{array}
+$$
+un sistema no homogéneo de ecuaciones lineales. Si $n=m$ y las columnas de la matriz $\bm{A}$ son linealmente independientes, entonces existe una solución única para el sistema.
+\end{teorema}
+
+\begin{ejercicio}
+Demuestre los teoremas \ref{teorema:solucion-no-triv-sist-hom} y \ref{teorema:solucion-unica-sist-no-hom}.\newline
+Sugerencia: Utilice el teorema \ref{teorema:conjuntos-maximales}.
+\end{ejercicio}
+
+\begin{ejercicio}
+Suponga que se tiene un sistema lineal homogéneo y que $n = m$. Además suponga que las columnas de la matriz $\bm{A}$ son linealmente independientes. Demuestre que la única solución es la solución trivial.
+\end{ejercicio}
 
 
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
+%matriz de Gram
 
 \chapter{Vectores propios y valores característicos}
 \label{chapter:eigen}
