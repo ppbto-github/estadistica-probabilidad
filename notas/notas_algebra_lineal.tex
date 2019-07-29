@@ -778,9 +778,38 @@ $$
 en donde $C_{ij} = (-1)^{i + j}M_{ij}$ con $M_{ij}$ el determinante obtenido al eliminar el renglón $i$ y la columna $j$ de la matriz $\bm{A}$.
 \end{teorema}
 
+\begin{ejercicio}
+Demuestre que una matriz cuadrada con un renglón o una columna llena de ceros, no tiene inversa.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que una matriz cuadrada y triangular (superior o inferior) cuya diagonal está llena de ceros, no tiene inversa.
+\end{ejercicio}
+
 \chapter{Productos escalares y ortogonalidad}
 \label{capitulo:productos-escalares}
 %matriz de Gram
+
+Como vimos, el producto punto satisface las propiedades dadas en la proposición \ref{proposicion:propiedades-producto-punto}. Este producto es un caso particular de un mapeo llamado \textbf{producto escalar}.
+
+\begin{definicion}[Producto escalar]
+\label{definicion:producto-escalar}
+
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Un \textbf{producto escalar} es un mapeo $\left<\cdot,\cdot \right>:\mathbb{V} \times \mathbb{V} \rightarrow \mathbb{F}$ que satisface las siguiente propiedades:
+
+\begin{enumerate}[label=\alph*)]
+\item $\left< \bm{v}, \bm{w} \right> = \left< \bm{w}, \bm{v} \right>$ para todo $\bm{v}, \bm{w} \in \mathbb{V}$ (simetría).
+
+\item $\left< \bm{u}, \bm{v} + \bm{w} \right> = \left< \bm{u}, \bm{v} \right> + \left< \bm{u}, \bm{w} \right>.$
+
+\item Si $k \in \mathbb{F}$, entonces:
+
+$$ \left< k \bm{u}, \bm{v} \right> = k \left< \bm{u}, \bm{v} \right> = \left< \bm{u}, k\bm{v} \right> $$
+
+\item Si además se satisface que para un elemento $\bm{v} \in \mathbb{V}$ fijo tal que para todo $\bm{w} \in \mathbb{V}$ se tiene que $\left< \bm{v},\bm{w} \right> = 0$, entonces $\bm{v} = \bm{0}$. Decimos que el producto escalar es \textbf{no degenerado}.
+\end{enumerate}
+
+\end{definicion}
 
 \chapter{Vectores propios y valores característicos}
 \label{chapter:eigen}
