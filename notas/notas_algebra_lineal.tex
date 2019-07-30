@@ -786,18 +786,22 @@ Demuestre que una matriz cuadrada con un renglón o una columna llena de ceros, 
 Demuestre que una matriz cuadrada y triangular (superior o inferior) cuya diagonal está llena de ceros, no tiene inversa.
 \end{ejercicio}
 
-\chapter{Productos escalares y ortogonalidad}
+\chapter{Producto escalar y ortogonalidad}
 \label{capitulo:productos-escalares}
 %matriz de Gram
 
+\section{Producto escalar}
+\label{seccion:producto-escalar}
 Como vimos, el producto punto satisface las propiedades dadas en la proposición \ref{proposicion:propiedades-producto-punto}. Este producto es un caso particular de un mapeo llamado \textbf{producto escalar}.
 
 \begin{definicion}[Producto escalar]
 \label{definicion:producto-escalar}
 
-Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Un \textbf{producto escalar} es un mapeo $\left<\cdot,\cdot \right>:\mathbb{V} \times \mathbb{V} \rightarrow \mathbb{F}$ que satisface las siguiente propiedades:
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Un \textbf{producto escalar} (o producto interno) es un mapeo $\left<\cdot,\cdot \right>:\mathbb{V} \times \mathbb{V} \rightarrow \mathbb{F}$ que satisface las siguiente propiedades:
 
 \begin{enumerate}[label=\alph*)]
+\item $\left< \bm{v}, \bm{v} \right> \geq 0 $, con igualdad si y sólo si $\bm{v} = \bm{0}$.
+
 \item $\left< \bm{v}, \bm{w} \right> = \left< \bm{w}, \bm{v} \right>$ para todo $\bm{v}, \bm{w} \in \mathbb{V}$ (simetría).
 
 \item $\left< \bm{u}, \bm{v} + \bm{w} \right> = \left< \bm{u}, \bm{v} \right> + \left< \bm{u}, \bm{w} \right>.$
@@ -808,7 +812,87 @@ $$ \left< k \bm{u}, \bm{v} \right> = k \left< \bm{u}, \bm{v} \right> = \left< \b
 
 \item Si además se satisface que para un elemento $\bm{v} \in \mathbb{V}$ fijo tal que para todo $\bm{w} \in \mathbb{V}$ se tiene que $\left< \bm{v},\bm{w} \right> = 0$, entonces $\bm{v} = \bm{0}$. Decimos que el producto escalar es \textbf{no degenerado}.
 \end{enumerate}
+\end{definicion}
 
+\begin{ejercicio}
+Sea \mbb{V} el espacio de funciones continuas con valores en \mbb{R} y definidas en el intervalo $[0,1]$. Demuestre que 
+$$ \left< f, g \right> = \int_{0}^{1} f(t) g(t) dt $$
+es un producto escalar.
+\end{ejercicio}
+
+\begin{definicion}[Norma de un vector]
+\label{definicion:norma}
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Sea $\left<\cdot,\cdot \right>$ un producto escalar definido en \mbb{V}. La \textbf{norma} de un vector $\bm{v} \in \mathbb{V}$ se define como:
+$$ ||\bm{v}|| = \sqrt{\left< v, v \right>}.$$
+\end{definicion}
+
+\begin{ejercicio}
+En el caso del producto punto, ¿cuál es la expresión de la norma de un vector? De acuerdo a esta expresión, de una expresión, en términos de la norma, para la distancia euclidiana en $\mathbb{R}^n$. 
+\end{ejercicio}
+
+\begin{proposicion}
+Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}, algunas de las propiedades de una norma son las siguientes:
+
+\begin{enumerate}[label = \alph*)]
+\item $||k \bm{v}|| = |k|\medspace ||\bm{v}||$, para $k \in \mathbb{F}, \bm{v} \in \mathbb{V}$. 
+
+\item $\left< \bm{v}, \bm{w} \right>^{2} \leq ||\bm{v}||^{2} \medspace ||\bm{w}||^{2}$ con igualdad si y sólo si $\bm{v} = k\bm{w}$ para algún escalar $k \in \mathbb{F}$ (Desigualdad de Cauchy-Schwarz).
+
+\item $||\bm{v} + \bm{w} || \leq ||\bm{v}|| + ||\bm{w}||$ (Desigualdad del triángulo).
+
+\item $||\bm{v} + \bm{w}||^2 + ||\bm{v} - \bm{w}||^2 = 2(||\bm{v}||^2 + ||\bm{w}||^2)$ (Ley del paralelogramo).
+\end{enumerate}
+\end{proposicion}
+
+\begin{ejercicio}
+Utilizando la desigualdad de Cauchy-Schwarz, demuestre la desigualdad del triángulo.\newline
+Sugerencia: exprese $|| \bm{v} + \bm{w} ||^2$ en términos del producto escalar.
+\end{ejercicio}
+
+\begin{definicion}[Vector unitario]
+\label{definicion:vector unitario}
+Un vector $\bm{v}$ en un espacio vectorial \mbb{F} sobre el cual se ha definido una norma, se dice que es un \textbf{vector unitario} (o vector dirección), si $||\bm{v}|| = 1$.
+\end{definicion}
+
+\begin{ejercicio}
+Demostrar la siguiente afirmación:
+
+Dado un vector $\bm{v} \neq \bm{0}$, podemos formar un vector unitario, $\bm{w}$, con la misma dirección que $\bm{v}$ de la siguiente manera:
+$$ \bm{w} = \dfrac{\bm{v}}{||\bm{v}||}.$$
+\end{ejercicio}
+
+\section{Ortogonalidad}
+\label{seccion:ortogonalidad}
+\begin{definicion}[Vectores ortogonales y paralelos]
+Decimos que dos vectores son \textbf{ortogonales} si 
+$$ \left<\bm{v}, \bm{w} \right> = 0.$$
+
+Si
+$$ \left<\bm{v}, \bm{w} \right> = ||\bm{v}|| \medspace ||\bm{w}||$$
+
+decimos que son \textbf{paralelos}. En otras palabras, dos vectores son paralelos si uno es múltiplo de otro (ver desigualdad de Cauchy-Schwarz).
+\end{definicion}
+
+
+\begin{definicion}[Conjunto ortonormales]
+Sea $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$ un conjunto de vectores distintos del vector cero. Decimos que el conjunto $\mathcal{X}$ es un \textbf{conjunto ortogonal} si $\left< \bm{v_i}, \bm{v_j} \right> = 0$ para todo $i \neq j$.
+
+Si además tenemos que $||\bm{v_i} = 1$ para toda $i$, entonces decimos que $\mathcal{X}$ es un \textbf{conjunto ortonormal}.
+\end{definicion}
+
+\begin{ejercicio}
+Sea $\{\bm{v_1}, \ldots, \bm{v_n} \}$ un conjunto de vectores ortogonales, demuestre que
+$$ \left| \left| \sum_{i = 1}^{n} \bm{v_i} \right| \right|^{2} = \sum_{i = 1}^{n}||\bm{v_i}||^{2}.$$
+Sugerencia: Primero analice el caso en que $n = 2$ y argumente la generalización.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que un conjunto ortogonal de vectores distintos del vector cero, $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$, forma un conjunto linealmente independiente.\newline
+%Sugerencia: Demuestre primero que $\left< \bm{v}, \bm{0} \right> = 0$ para todo vector en el espacio vectorial \mbb{V}.
+\end{ejercicio}
+
+\begin{definicion}[Bases ortogonales y ortonormales]
+Llamamos \textbf{base ortogonal} a una base formada por un conjunto de vectores ortogonales, si además estos vectores son ortonomales, la base es llamada \textbf{base ortonormal}.
 \end{definicion}
 
 \chapter{Vectores propios y valores característicos}
