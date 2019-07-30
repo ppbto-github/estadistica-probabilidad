@@ -895,6 +895,29 @@ Demuestre que un conjunto ortogonal de vectores distintos del vector cero, $\mat
 Llamamos \textbf{base ortogonal} a una base formada por un conjunto de vectores ortogonales, si además estos vectores son ortonomales, la base es llamada \textbf{base ortonormal}.
 \end{definicion}
 
+\begin{definicion}[Matrices ortogonales y ortonormales]
+\label{definicion:matriz-ortogonal}
+Supongamos que tenemos una matriz, $\bm{A}$, de \matdim{n}{n}. Decimos que $\bm{A}$ es una matriz ortogonal, si sus vectores columna forman un conjunto de vectores ortogonales.
+Si además estos vectores columna son ortonormales, decimos que $\bm{A}$ es una matriz ortonormal.
+\end{definicion}
+
+\begin{nota}
+\label{nota:Matrices-ortonormales}
+Nosotros hacemos distinción entre matrices ortogonales y ortonormales, en la literatura es común utilizar únicamente el término matriz ortogonal para referirse a ambos tipos de matrices.
+\end{nota}
+
+\begin{teorema}
+Sea $\bm{A}$ una matriz de \matdim{n}{n}. Entonces los siguientes puntos son equivalentes:
+
+\begin{enumerate}[label=\roman*)]
+\item Las columnas de $\bm{A}$ son vectores ortonormales.
+\item $\bm{A}^{T} \bm{A} = \bm{I} = \bm{A} \bm{A}^{T}.$
+\item Los renglones de $\bm{A}$ son vectores ortonormales.
+\end{enumerate}
+
+Por lo tanto, para una matriz ortonormal, tenemos que $\bm{A}^{-1} = \bm{A}^{T}.$
+\end{teorema}
+
 \chapter{Vectores propios y valores característicos}
 \label{chapter:eigen}
 
