@@ -956,6 +956,8 @@ p_{\bm{A}}(\lambda) = \left| \lambda \bm{I} - \bm{A} \right|. \label{eqn:polinom
 Es fácil ver entonces, que las raíces del polinomio característico son los valores característicos de la matriz $\bm{A}$.
 \end{definicion}
 
+Observemos que el polinomio característico es un polinomio de grado $n$ y por lo tanto, de acuerdo al teorema fundamental del álgebra, tiene $n$ raíces (ya sean complejas o reales). Así, una matriz cuadrada de \matdim{n}{n} tiene $n$ valores característicos, algunos de ellos complejos, otros reales e incluso puede haber valores repetidos.
+
 \begin{ejercicio}
 Demuestre que si una matriz, $\bm{A}$, de tamaño \matdim{n}{n}, tiene menos de $n$ columnas linealmente independientes, entonces existe un valor característico $\lambda$.
 \end{ejercicio}
@@ -964,9 +966,23 @@ Demuestre que si una matriz, $\bm{A}$, de tamaño \matdim{n}{n}, tiene menos de 
 Si $\bm{U}$ es una matriz triangular superior, encuentre sus valores característicos y de un posible vector característico asociado a cada uno de ellos.
 \end{ejercicio}
 
-\begin{teorema}
-Si $\lambda$ es un valor característico de la matriz $\bm{A}$, entonces también es un valor característico de $\bm{A}^{T}$.
+\begin{teorema}[Propiedades de valores y vectores característicos]
+\label{teorema:propiedades eigenvalues}
+
+Sea $\bm{A}$ una matriz de \matdim{n}{n}, tenemos entonces:
+\begin{enumerate}[label=\alph*)]
+\item Si $\lambda$ es un valor característico de la matriz $\bm{A}$, entonces también es un valor característico de $\bm{A}^{T}$
+
+\item El producto de los valores característicos de $\bm{A}$, es igual a $|\bm{A}|$.
+
+\item La suma de los valores característicos de $\bm{A}$, es igual a la \textbf{traza} de $\bm{A}$, $tr(\bm{A})$, es decir, igual a la suma de los elementos en la diagonal de $\bm{A}$
+$$ tr(\bm{A}) = \sum_{i = 1}^{n} a_{ii}.$$
+
+\item Si $\{\lambda_{1}, \lambda_{2}, \ldots, \lambda_{k} \}$ es un conjunto de valores característicos de $\bm{A}$, todos ellos distintos, entonces el conjunto con los vectores característicos $\{\bm{x}_1, \ldots, \bm{x}_k \}$ es un conjunto linealmente independiente (demostrar). %página 323 de Linear algebra and matrix analysis
+\end{enumerate}
+
 \end{teorema}
+
 
 
 \end{document}
