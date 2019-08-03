@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{dirtytalk}
+\usepackage[none]{hyphenat} %Para evitar el corte de palabras
 \usepackage{amsmath}
 \usepackage{amsthm} %Para definir ambientes con \newtheorem
 \usepackage{amsfonts}
@@ -67,6 +68,7 @@
 \newcommand{\matdim}[2]{$#1 \times #2$}
 
 \begin{document}
+\sloppy %Para justificar correctamente (tiene que ver con \usepackage[none]{hyphenat})
 \pagenumbering{Roman}
 \maketitle
 \renewcommand{\contentsname}{Contenido}
@@ -273,7 +275,7 @@ con lo que llegamos a una contradicción con nuestro supuesto inicial de indepen
 
 
 \begin{ejercicio}
-Establezca las dimensiones de los siguientes espacios vectoriales:
+Establezca las dimensiones de los siguientes subespacios vectoriales:
 \begin{itemize}[label=$\bullet$]
 \item $\mathbb{R}^n$ sobre el campo $\mathbb{R}$.
 \item Recta en $\mathbb{R}^2$ que pasa por el origen.
@@ -783,7 +785,7 @@ Demuestre que una matriz cuadrada con un renglón o una columna llena de ceros, 
 \end{ejercicio}
 
 \begin{ejercicio}
-Demuestre que una matriz cuadrada y triangular (superior o inferior) cuya diagonal está llena de ceros, no tiene inversa.
+Demuestre que una matriz cuadrada y triangular (superior o inferior) cuya diagonal tiene un elemento igual a cero, no tiene inversa.
 \end{ejercicio}
 
 \chapter{Producto escalar y ortogonalidad}
@@ -887,7 +889,7 @@ Sugerencia: Primero analice el caso en que $n = 2$ y argumente la generalizació
 \end{ejercicio}
 
 \begin{ejercicio}
-Demuestre que un conjunto ortogonal de vectores distintos del vector cero, $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$, forma un conjunto linealmente independiente.\newline
+Demuestre que un conjunto ortogonal de vectores distintos del vector cero, $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$, forma un conjunto linealmente independiente. El recíproco de esta proposición ¿es verdadero? \newline
 %Sugerencia: Demuestre primero que $\left< \bm{v}, \bm{0} \right> = 0$ para todo vector en el espacio vectorial \mbb{V}.
 \end{ejercicio}
 
@@ -918,8 +920,53 @@ Sea $\bm{A}$ una matriz de \matdim{n}{n}. Entonces los siguientes puntos son equ
 Por lo tanto, para una matriz ortonormal, tenemos que $\bm{A}^{-1} = \bm{A}^{T}.$
 \end{teorema}
 
-\chapter{Vectores propios y valores característicos}
+\chapter{Valores y vectores característicos}
 \label{chapter:eigen}
+Cuando multiplicamos un vector $\bm{x}$ por una matriz $\bm{A}$, lo que realmente se está haciendo es una transformación lineal del vector $\bm{x}$. Esta transformación, usualmente, cambia el ángulo de este vector.
+
+Sin embargo, para ciertos vectores  $\bm{x}$, la transformación $\bm{A} \bm{x}$ es igual a $\lambda \bm{x}$, para un escalar $\lambda$. Geométricamente, esto se interpreta como una contracción (si $\lambda < 1$) o una expansión (si $\lambda >1$) del vector.
+
+En esta sección nos restringimos a matrices sobre el campo de los números complejos $\mathbb{C}$.
+
+\begin{definicion}[Valores y vectores característicos]
+\label{definicion:eigenvalues eigenvectors}
+
+Sea $\bm{A}$ una matriz cuadrada de \matdim{n}{n}. Un \textbf{valor característico\footnote{También llamado un eigenvalue}} de la matriz $\bm{A}$ es un escalar tal que satisface la ecuación (\ref{eqn:valor carateristico})
+
+\begin{equation}
+\bm{Ax} = \lambda \bm{x} \label{eqn:valor carateristico}
+\end{equation}
+para un vector $\bm{x} \neq \bm{0}$. Cualquier vector $\bm{x}$ que satisface lo anterior, es llamado \textbf{vector característico\footnote{Eigenvector}} asociado a $\lambda$.
+\end{definicion}
+
+\begin{ejercicio}
+En la definición \ref{definicion:eigenvalues eigenvectors}, ¿es necesario que la matriz $\bm{A}$ sea una matriz cuadrada? Argumente su respuesta.
+\end{ejercicio}
+
+De acuerdo a la ecuación (\ref{eqn:valor carateristico}), se tiene que $\lambda$ es un valor característico de la matriz $\bm{A}$ si y sólo si el sistema (homogéneo) de ecuaciones lineales $\left( \bm{A} - \lambda \bm{I} \right)$ tiene una solución no trivial $\bm{x} \neq \bm{0}$. Esto quiere decir que cualquier $\lambda$ que haga que la matriz  $\bm{A} - \lambda \bm{I}$ se vuelva una matriz singular, será un valor característico de la matriz $\bm{A}$. De manera equivalente, basta  encontrar un $\lambda$, tal que $|\lambda \bm{I} - \bm{A}| = 0.$
+
+\begin{definicion}[Polinómio característico]
+\label{definicion:polinomio caracteristico}
+El polinomio característico de una matriz $\bm{A}$ de \matdim{n}{n}, es el polinomio dado por
+
+\begin{equation}
+p_{\bm{A}}(\lambda) = \left| \lambda \bm{I} - \bm{A} \right|. \label{eqn:polinomio caracteristico}
+\end{equation}
+
+Es fácil ver entonces, que las raíces del polinomio característico son los valores característicos de la matriz $\bm{A}$.
+\end{definicion}
+
+\begin{ejercicio}
+Demuestre que si una matriz, $\bm{A}$, de tamaño \matdim{n}{n}, tiene menos de $n$ columnas linealmente independientes, entonces existe un valor característico $\lambda$.
+\end{ejercicio}
+
+\begin{ejercicio}
+Si $\bm{U}$ es una matriz triangular superior, encuentre sus valores característicos y de un posible vector característico asociado a cada uno de ellos.
+\end{ejercicio}
+
+\begin{teorema}
+Si $\lambda$ es un valor característico de la matriz $\bm{A}$, entonces también es un valor característico de $\bm{A}^{T}$.
+\end{teorema}
 
 
 \end{document}
