@@ -978,11 +978,24 @@ Sea $\bm{A}$ una matriz de \matdim{n}{n}, tenemos entonces:
 \item La suma de los valores característicos de $\bm{A}$, es igual a la \textbf{traza} de $\bm{A}$, $tr(\bm{A})$, es decir, igual a la suma de los elementos en la diagonal de $\bm{A}$
 $$ tr(\bm{A}) = \sum_{i = 1}^{n} a_{ii}.$$
 
-\item Si $\{\lambda_{1}, \lambda_{2}, \ldots, \lambda_{k} \}$ es un conjunto de valores característicos de $\bm{A}$, todos ellos distintos, entonces el conjunto con los vectores característicos $\{\bm{x}_1, \ldots, \bm{x}_k \}$ es un conjunto linealmente independiente (demostrar). %página 323 de Linear algebra and matrix analysis
+\item Si $\{\lambda_{1}, \lambda_{2}, \ldots, \lambda_{k} \}$ es un conjunto de valores característicos de $\bm{A}$, todos ellos distintos, entonces el conjunto con los vectores característicos $\{\bm{x}_1, \ldots, \bm{x}_k \}$ es un conjunto linealmente independiente (Demostrar). %página 323 de Linear algebra and matrix analysis
+
+\item Si $\bm{A}$ es una matriz \textbf{simétrica} sobre el campo \mbb{R}, entonces todos sus valores característicos pertenecen a \mbb{R}.
+
+\item Si $\bm{x}_1$ y $\bm{x}_2$ son dos vectores característicos de una matriz real simétrica $\bm{A}$ y $\lambda_1, \lambda_2$ son sus respectivos valores característicos. Entonces $\bm{x}_1$ y $\bm{x}_2$ son ortogonales (utilizando el producto punto como producto escalar). (Demostrar)
 \end{enumerate}
 
 \end{teorema}
 
+Finalizaremos este capítulo con el siguiente resultado:
+
+\begin{teorema}[Descomposición espectral para matrices simétricas]
+Si $\bm{A}$ es una matriz simétrica sobre el campo \mbb{R}, entonces existe una matriz ortogonal (propiamente ortonormal) $\bm{P}$ y una matriz diagonal $\bm{\Lambda}$ tales que
+
+$$\bm{P}^{T} \bm{A} \bm{P} = \bm{\Lambda}.$$
+
+La diagonal de $\bm{\Lambda}$ está formada por los valores característicos de $\bm{A}$ y las columnas de $\bm{P}$ son los vectores característicos correspondientes.
+\end{teorema}
 
 
 \end{document}
