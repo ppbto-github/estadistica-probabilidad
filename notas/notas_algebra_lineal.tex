@@ -997,5 +997,69 @@ $$\bm{P}^{T} \bm{A} \bm{P} = \bm{\Lambda}.$$
 La diagonal de $\bm{\Lambda}$ está formada por los valores característicos de $\bm{A}$ y las columnas de $\bm{P}$ son los vectores característicos correspondientes.
 \end{teorema}
 
+\chapter{Descomposición por valores singulares}
+\label{capitulo:SVD}
+La descomposición por valores singulares (SVD por sus siglas en inglés) es una de los métodos mas utilizados para factorizar matrices rectangulares. Particularmente, esta descomposición es una de las técnicas más utilizadas para reducir la dimensión en los conjuntos de datos.
+
+Antes de introducir la descomposición necesitamos la siguiente definición.
+
+\begin{definicion}[Rango de una matriz]
+\label{definicion:rango de una matriz}
+El \textbf{rango de las columnas} de una matriz $\bm{A}$, es el número de columnas de $\bm{A}$ que son linealmente independientes.
+
+El \textbf{rango de los renglones} de una matriz $\bm{A}$, es el número de renglones de $\bm{A}$ que son linealmente independientes.
+\end{definicion}
+
+De acuerdo a la definición \ref{definicion:rango de una matriz}, el rango de una matriz es una medida de redundancia, una matriz son un rango bajo (pocos renglones o columnas linealmente independientes) indica que la información contenida en ella es redundante. De acuerdo a lo anterior, una matriz no singular no tiene redundancia
+
+
+\begin{teorema}[Descomposición por valores singulares]
+\label{teorema:descomposicion-svd}
+Sea $\bm{A}$ una matriz de \matdim{m}{n} sobre el campo \mbb{R} con un rango $r \leq min(m,n)$. Existen matrices ortogonales $\bm{U}$ de \matdim{m}{m} y $\bm{V}$ de \matdim{n}{n}, tales que
+
+$$
+\begin{array}{lcr}
+\bm{A} = \bm{UD}\bm{V}^{T} & \medspace \text{en donde} \medspace \medspace
+\bm{D} = 
+\begin{pmatrix}
+\bm{\Sigma} & \bm{O} \\
+\bm{O} & \bm{O}
+\end{pmatrix}
+\medspace \text{y} \medspace \medspace
+
+\bm{\Sigma} = 
+\begin{pmatrix}
+\sigma_1 & 0 & \ldots & 0 \\
+0 & \sigma_2 & \ldots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \ldots & \sigma_r
+\end{pmatrix}
+\end{array}
+$$
+
+con $\bm{D}$ una matriz de \matdim{m}{n}, $\bm{\Sigma}$ es una matriz de \matdim{r}{r} y los $\sigma_i$'s son números reales tales que $\sigma_1 \geq \sigma_2 \ldots \geq \sigma_r \geq 0$ estos números son llamados \textbf{valores singulares} de la matriz $\bm{A}$. Las matrices $\bm{O}$ están formadas por ceros y tienen dimensiones que hacen que el producto anterior esté bien definido.
+
+Esta descomposición también se puede expresar de la siguiente manera:
+
+$$
+\bm{A} = \bm{UD}\bm{V}^{T} = 
+\begin{pmatrix}
+\bm{U}_1 : \bm{U}_2 
+\end{pmatrix}
+\begin{pmatrix}
+\bm{\Sigma} & \bm{O} \\
+\bm{O} & \bm{O}
+\end{pmatrix}
+\begin{pmatrix}
+\bm{V}_{1}^{T} \\
+\bm{V}_{2}^{T}
+\end{pmatrix}
+= \bm{U}_{1} \bm{\Sigma} \bm{V}_{1}^{T}.
+$$
+
+
+\end{teorema}
+
+
 
 \end{document}
