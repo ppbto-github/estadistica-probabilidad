@@ -879,7 +879,7 @@ decimos que son \textbf{paralelos}. En otras palabras, dos vectores son paralelo
 \begin{definicion}[Conjunto ortonormales]
 Sea $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$ un conjunto de vectores distintos del vector cero. Decimos que el conjunto $\mathcal{X}$ es un \textbf{conjunto ortogonal} si $\left< \bm{v_i}, \bm{v_j} \right> = 0$ para todo $i \neq j$.
 
-Si además tenemos que $||\bm{v_i} = 1$ para toda $i$, entonces decimos que $\mathcal{X}$ es un \textbf{conjunto ortonormal}.
+Si además tenemos que $||\bm{v_i}|| = 1$ para toda $i$, entonces decimos que $\mathcal{X}$ es un \textbf{conjunto ortonormal}.
 \end{definicion}
 
 \begin{ejercicio}
@@ -990,6 +990,7 @@ $$ tr(\bm{A}) = \sum_{i = 1}^{n} a_{ii}.$$
 Finalizaremos este capítulo con el siguiente resultado:
 
 \begin{teorema}[Descomposición espectral para matrices simétricas]
+\label{teorema:descomposicion espectral}
 Si $\bm{A}$ es una matriz simétrica sobre el campo \mbb{R}, entonces existe una matriz ortogonal (propiamente ortonormal) $\bm{P}$ y una matriz diagonal $\bm{\Lambda}$ tales que
 
 $$\bm{P}^{T} \bm{A} \bm{P} = \bm{\Lambda}.$$
@@ -1091,6 +1092,37 @@ $$
 
 La matriz $\bm{U}_{1}^{T} \bm{A} = \bm{\Sigma}\bm{V}_{1}^{T}$ es una matriz de \matdim{r}{n} con rango $r$, que no presenta redundancia en la información. Por lo tanto, en lugar de utilizar la matriz $\bm{A}$, se puede reducir la dimensión de los datos y su redundancia utilizando la matriz $\bm{\Sigma}\bm{V}_{1}^{T}$.
 
-Observemos además que, ya que la matriz $\bm{\Sigma}$ es una matriz diagonal, el único efecto que tiene sobre $\bm{V}_{1}^{T}$ es estirar o encoger sus vectores columna (de acuerdo a si los $\sigma_i$'s son mayores o menores a $1$) por lo tanto también podríamos utilizar la matriz $\bm{V}_{1}^{T}$ en lugar de $\bm{A}$.
+Observemos además que ya que la matriz $\bm{\Sigma}$ es una matriz diagonal, el único efecto que tiene sobre $\bm{V}_{1}^{T}$ es estirar o encoger sus vectores columna (de acuerdo a si los $\sigma_i$'s son mayores o menores a $1$) por lo tanto, también podríamos utilizar la matriz $\bm{V}_{1}^{T}$ en lugar de $\bm{A}$.
+
+\chapter{Análisis de componentes principales}
+\label{capitulo:pca}
+El análisis de componentes principales (PCA por sus siglas en inglés), está basado en la descomposición espectral del teorema \ref{teorema:descomposicion espectral}. Este análisis, es una de las formas más utilizadas para expresar un conjunto de variables correlacionadas utilizando un conjunto de variables no correlacionadas y es, junto con la descomposición por valores singulares, una de las técnicas más comunes para reducir la dimensión en un conjunto de datos.
+
+
+\section{Formas cuadráticas}
+\label{seccion:formas cuadraticas}
+Antes de detallar el análisis de componentes principales, es útil tener los siguientes resultados.
+
+\begin{definicion}[Forma cuadrática]
+\label{definicion:forma cuadratica}
+Sea $\bm{A}$ una matriz de \matdim{n}{n}, la \textbf{forma cuadrática} asociada a $\bm{A}$, es la expresión
+
+$$ \bm{x}^{T} \bm{Ax}$$
+
+en donde $\bm{x}$ es un vector (columna) de dimensión $n$.
+
+Observemos que la forma cuadrática de una matriz es un escalar.
+\end{definicion}
+
+\begin{definicion}[Matrices definidas]
+\label{definicion:matrices definida}
+Sea $\bm{A}$ una matriz de \matdim{n}{n}, decimos que $\bm{A}$ es una matriz \textbf{definida positiva} si $\bm{x}^{T} \bm{Ax} > 0$ para todo vector $n-$dimensional $\bm{x}$ distinto del vector cero.
+
+Si  $\bm{x}^{T} \bm{Ax} < 0$, para todo vector $\bm{x} \neq \bm{0}$, decimos que $\bm{A}$ es una matriz \textbf{definida negativa}.
+
+Finalmente, si $\bm{x}^{T} \bm{Ax} \geq 0$ para todo vector $\bm{x} \neq \bm{0}$, entonces decimos que es una matriz \textbf{semidefinida positiva}. Si $\bm{x}^{T} \bm{Ax} \leq 0$,  para todo vector $\bm{x} \neq \bm{0}$, decimos que $\bm{A}$ es una matriz \textbf{semidefinida negativa}.
+
+\end{definicion}
+
 
 \end{document}
