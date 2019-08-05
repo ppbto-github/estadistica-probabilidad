@@ -1015,6 +1015,7 @@ De acuerdo a la definición \ref{definicion:rango de una matriz}, el rango de un
 
 \begin{teorema}[Descomposición por valores singulares]
 \label{teorema:descomposicion-svd}
+
 Sea $\bm{A}$ una matriz de \matdim{m}{n} sobre el campo \mbb{R} con un rango $r \leq min(m,n)$. Existen matrices ortogonales $\bm{U}$ de \matdim{m}{m} y $\bm{V}$ de \matdim{n}{n}, tales que
 
 $$
@@ -1056,10 +1057,40 @@ $$
 \end{pmatrix}
 = \bm{U}_{1} \bm{\Sigma} \bm{V}_{1}^{T}.
 $$
-
-
+en donde $\bm{U}_1$ y $\bm{V}_1$ son matrices de \matdim{m}{r} y \matdim{n}{r} respectivamente.
 \end{teorema}
 
+\section{Reducción de la dimensión de los datos}
+\label{seccion:reduccion de la dimension}
+Supongamos que tenemos una matriz de \matdim{m}{n}, $\bm{A}$, con un rango $r < min(m,n)$. De acuerdo al teorema \ref{teorema:descomposicion-svd}, tenemos que $\bm{A} = \bm{U\Sigma}\bm{V}^{T}$. Utilizando la ortogonalidad de $\bm{U}$, tenemos que
 
+$$ \bm{U}^{T}\bm{A} = \bm{\Sigma}\bm{V}^{T}$$
+
+lo que también puede expresarse como 
+
+$$
+\begin{pmatrix}
+\bm{U}_{1}^{T} \\
+\bm{U}_{2}^{T}
+\end{pmatrix}
+\bm{A} =
+\begin{pmatrix}
+\bm{\Sigma} & \bm{O} \\
+\bm{O} & \bm{O}
+\end{pmatrix}
+\begin{pmatrix}
+\bm{V}_{1}^{T} \\
+\bm{V}_{2}^{T}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\bm{\Sigma} \bm{V}_{1}^{T}\\
+\bm{O}
+\end{pmatrix}.
+$$
+
+La matriz $\bm{U}_{1}^{T} \bm{A} = \bm{\Sigma}\bm{V}_{1}^{T}$ es una matriz de \matdim{r}{n} con rango $r$, que no presenta redundancia en la información. Por lo tanto, en lugar de utilizar la matriz $\bm{A}$, se puede reducir la dimensión de los datos y su redundancia utilizando la matriz $\bm{\Sigma}\bm{V}_{1}^{T}$.
+
+Observemos además que, ya que la matriz $\bm{\Sigma}$ es una matriz diagonal, el único efecto que tiene sobre $\bm{V}_{1}^{T}$ es estirar o encoger sus vectores columna (de acuerdo a si los $\sigma_i$'s son mayores o menores a $1$) por lo tanto también podríamos utilizar la matriz $\bm{V}_{1}^{T}$ en lugar de $\bm{A}$.
 
 \end{document}
