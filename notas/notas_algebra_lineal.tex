@@ -1124,5 +1124,74 @@ Finalmente, si $\bm{x}^{T} \bm{Ax} \geq 0$ para todo vector $\bm{x} \neq \bm{0}$
 
 \end{definicion}
 
+\begin{proposicion}
+\label{proposicion:positivas y eigenvalores}
+
+Para una matriz, $\bm{A}$ de \matdim{n}{n}, las siguientes condiciones son equivalentes:
+
+\begin{enumerate}[label=\alph*) ]
+\item $\bm{A}$ es una matriz simétrica definida positiva.
+\item $\bm{x}^{T} \bm{Ax} > 0$ para todo $\bm{x} \neq \bm{0}$.
+\item Todos los valores característicos de $\bm{A}$ son positivos.
+\end{enumerate}
+\end{proposicion}
+
+\begin{proposicion}
+\label{proposicion:semidefinidas y eigenvalores}
+
+Para una matriz, $\bm{A}$ de \matdim{n}{n} sobre el campo \mbb{R}, las siguientes condiciones son equivalentes:
+
+\begin{enumerate}[label=\alph*) ]
+\item $\bm{A}$ es una matriz simétrica semidefinida positiva.
+\item $\bm{x}^{T} \bm{Ax} \geq 0$ para todo $\bm{x} \neq \bm{0}$.
+\item Todos los valores característicos de $\bm{A}$ son no negativos.
+\end{enumerate}
+\end{proposicion}
+
+\begin{ejercicio}
+Demuestre la proposición \ref{proposicion:positivas y eigenvalores}.
+\end{ejercicio}
+
+\section{Componentes principales}
+\label{seccion:componentes principales}
+Supongamos que tenemos una matriz, $\bm{X}$ de \matdim{m}{n} sobre el campo \mbb{R}. Cada columna de $\bm{X}$ (denotadas por $\bm{x}_1, \ldots, \bm{x}_n$) representa una variable y cada renglón una observación para cada variable. Supongamos además que cada columna  tiene media igual a cero y desviación estándar igual a uno.
+
+Los \textbf{componentes principales} de la matriz $\bm{X}$, se definen como una combinación lineal de las columnas de $\bm{X}$, en donde los coeficientes se eligen de tal forma que:
+
+\begin{itemize}
+\item Cada componente principal no está correlacionado con los demás.
+
+\item El primer componente principal explica la mayor variación en los datos de $\bm{X}$, el segundo explica la mayor cantidad de variación que todavía falta por explicar y así sucesivamente.
+\end{itemize}
+
+Ya que cada columna de $\bm{X}$ está estandarizada (media cero y desviación estándar igual a uno) podemos formar la matriz, $\bm{V}$, de correlaciones entre las variables de $\bm{X}$.
+
+$$ \bm{V} = \dfrac{1}{m} \bm{X}^{T} \bm{X}.$$
+
+Utilizando los valores propios de la matriz $\bm{V}$, ordenados de forma decreciente, $\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$, podemos formar la matriz diagonal $\bm{D}$. Además podemos formar la matriz ortogonal (ver teorema \ref{teorema:propiedades eigenvalues}) $\bm{W}$, cuya columna $i$ corresponde al vector característico correspondiente a $\lambda_i$. La matriz de componentes principales, $\bm{P}$, es una matriz de \matdim{m}{n} resultado del siguiente producto:
+
+$$ \bm{P} = \bm{XW}.$$
+
+\begin{ejercicio}
+Compruebe que el $j-$ésimo componente principal, es decir, la columna $j-$ésima de $\bm{P}$, se escribe como una combinación lineal de las columnas de $\bm{X}$ en donde los coeficientes están dados por el $j-$ésimo vector propio de la matriz $\bm{V}$.
+\end{ejercicio}
+
+\begin{definicion}[Variación total]
+\label{definicion:variacion total}
+La variación total de la matriz $\bm{X}$, es la suma de los valores característicos de la matriz $\bm{V}$. Es decir
+
+$$\lambda_1 + \ldots + \lambda_n.$$
+\end{definicion}
+
+Utilizando la variación total de la definición \ref{definicion:variacion total}, podemos calcular la proporción de variación que es explicada por el $j-$ésimo componente principal
+
+$$ \dfrac{\lambda_j}{\lambda_1 + \ldots + \lambda_n}.$$
+
+De esta manera, para reducir la dimensión de nuestros datos, en lugar de utilizar las $n$ columnas de la matriz $\bm{X}$ podemos utilizar las primeras $k$ columnas de la matriz $\bm{P}$.
+
+El número $k$ usualmente se determina estableciendo un umbral $r$ y tomando $k$ como
+
+$$ k = min \left\lbrace k^*: \dfrac{\lambda_1 + \ldots + \lambda_{k^*} }{\lambda_1 + \ldots + \lambda_n} > r \right\rbrace.$$
+
 
 \end{document}
