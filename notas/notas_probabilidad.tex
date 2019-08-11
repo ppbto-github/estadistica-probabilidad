@@ -1,0 +1,106 @@
+\documentclass[11pt]{report}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{dirtytalk}
+\usepackage[none]{hyphenat} %Para evitar el corte de palabras
+\usepackage{amsmath}
+\usepackage{amsthm} %Para definir ambientes con \newtheorem
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\usepackage{caption} % To make fonts on figure smaller
+\captionsetup[figure]{font=small}
+\captionsetup[table]{font=small}
+
+
+%opening
+\title{Módulo 2: Estadística y probabilidad con python \newline Probabilidad}
+\author{David R. Montalván Hernández}
+\date{}
+
+%=========Define los ambientes a utilizar =======%
+%Define estilo para dar un salto de línea en el encabezado
+%del 'teorema'
+\newtheoremstyle{break}
+{2ex} %above space
+{2ex} %below space
+{} %Body font)
+{} %indent amount
+{\bfseries} %head font
+{:} %post head puncuation
+{\newline} %post head space
+{}
+
+\theoremstyle{break}
+%Definición
+\newtheorem{definicion}{Definición}[chapter]
+
+%Teorema
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem*{demostracion}{Demostración}
+
+%Proposición
+\newtheorem{proposicion}{Proposición}[chapter]
+
+%Notas importantes
+\newtheorem{nota}{Nota}[chapter]
+
+%Ejercicios
+\newtheorem{ejercicio}{Ejercicio}[chapter]
+
+%Ejemplos
+\newtheorem{ejemplo}{Ejemplo}[chapter]
+
+%Algoritmo (Utiliza el ambiente tabbing)
+\theoremstyle{break}
+\newtheorem{algoritmo}{Algoritmo}[chapter]
+%=================================================%
+
+%=================Macros===================%
+\newcommand{\mbb}[1]{$\mathbb{#1}$}
+\newcommand{\matdim}[2]{$#1 \times #2$}
+
+\begin{document}
+\sloppy %Para justificar correctamente (tiene que ver con \usepackage[none]{hyphenat})
+\pagenumbering{Roman}
+\maketitle
+\renewcommand{\contentsname}{Contenido}
+\tableofcontents
+\renewcommand{\listfigurename}{Lista de imágenes}
+\listoffigures
+\renewcommand{\listtablename}{Lista de tablas}
+\renewcommand\tablename{Tabla}
+\renewcommand{\bibname}{Referencias}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\chaptername}{Capítulo}
+\listoftables
+
+\chapter{Conceptos básicos de probabilidad}
+\label{capitulo:conceptos basicos}
+
+\section{Espacios y medidas de probabilidad}
+\label{seccion:espacios y medidas de probabilidad}
+
+\subsection{Espacios de probabilidad}
+\label{seccion:Espacios de probabilidad}
+%Espacio muestral y ejemplos (prob for ML pag 1)
+%Definición de evento (prob for ML pag 2)
+%Motivación y definición de sigma álgebra (Hoel pag 6)
+
+\subsection{Medidas de probabilidad}
+%Definición de medida de probabilidad (Hoel pag 8)
+%Propiedades de una medida de probabildiad (Hoel 10)
+%Fórmula de inclusión y exclusión (prob for ML pag 4)
+
+\subsection{Probabilidad condicional e independencia}
+
+
+
+\end{document}
