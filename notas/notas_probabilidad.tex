@@ -84,6 +84,7 @@
 
 \chapter{Conceptos básicos de probabilidad}
 \label{capitulo:conceptos basicos}
+En este capítulo se desarrollan las ideas matemáticas detrás de los espacios de probabilidad. Se define de manera formal un evento y la motivación y definición de una sigma álgebra. Se estudia el paradigma frecuentista de la probabilidad y se establecen algunas propiedades de una medida de probabilidad. Finalmente se estudian los conceptos relacionados a la probabilidad condicional e independencia.
 
 \section{Espacios y medidas de probabilidad}
 \label{seccion:espacios y medidas de probabilidad}
@@ -93,6 +94,64 @@
 %Espacio muestral y ejemplos (prob for ML pag 1)
 %Definición de evento (prob for ML pag 2)
 %Motivación y definición de sigma álgebra (Hoel pag 6)
+
+Supongamos que se quiere modelar algún fenómeno en particular, por ejemplo, la trayectoria del precio de una acción. Lo primero que uno consideraría, es el conjunto de posibles resultados que este fenómeno puede tener.
+
+\begin{definicion}[Espacio muestral]
+\label{definicion: espacio muestral}
+Sea $\omega$ un resultado posible de un experimento, al conjunto de todos los posibles resultados de este experimento se le llama \textbf{espacio muestral}. Este espacio usualmente es denotado como $\Omega$.
+\end{definicion}
+
+Por ejemplo, el lanzamiento de una moneda $2$ veces, tiene el siguiente espacio muestral:
+$$
+\Omega = \{\left(Cara,Cara\right), \left(Cara,Cruz\right),\left(Cruz,Cara\right), \left(Cruz,Cruz\right)  \}
+$$
+
+El espacio muestral $\Omega$, puede ser un conjunto finito, numerable infinito o no numerable infinito y cada elemento de este conjunto se denota con la letra $\omega$.
+
+\begin{ejercicio}
+¿Cuál es  el espacio muestral si se busca modelar el precio de una acción?
+\end{ejercicio}
+
+Una vez establecido el conjunto $\Omega$, buscamos crear un conjunto $\mathcal{F}$, que contendrá los eventos a los cuales buscamos asignar probabilidades.
+
+\begin{definicion}[Evento]
+Sea $\Omega$ un espacio muestral. Cualquier subconjunto $A \subseteq \Omega$, incluyendo el conjunto vacío $\emptyset$ y el mismo conjunto $\Omega$, es llamado un \textbf{evento}.
+\end{definicion}
+
+Para tener una idea intuitiva de los conjuntos que deben de pertenecer a $\mathcal{F}$ consideremos dos eventos $A$ y $B$. Claramente si vamos a hablar de la probabilidad de $A$ y $B$, también tendría sentido hablar de la probabilidad de $A \cup B$ y $A \cap B$. Por lo tanto, requerimos que si $A, B \in \mathcal{F}$, entonces $A \cup B \in \mathcal{F}$ y  $A \cap B \in \mathcal{F}$. Finalmente si vamos a decir algo sobre la probabilidad de $A$, claramente tenemos que ser capaces de decir algo también sobre la probabilidad de $A^{c}$, es decir, si $A \in \mathcal{F}$, entonces requerimos que $A^{c} \in \mathcal{F}$.
+
+De manera formal, tenemos la siguiente definición.
+
+\begin{definicion}[Sigma álgebra]
+\label{definicion:sigma algebra}
+Una colección, $\mathcal{F}$, no vacía de subconjuntos de un conjunto $\Omega$, se llama una \textbf{sigma álgebra} ($\sigma$-álgebra) de subconjuntos de $\Omega$ si las siguientes propiedades se cumplen:
+
+\begin{enumerate}
+\item Si $A \in \mathcal{F}$, entonces $A^{c} \in \mathcal{F}$.
+
+\item Si $A_n \in \mathcal{F}$, $n = 1,2, \ldots$, entonces $\cup_{n=1}^{\infty}A_n \in \mathcal{F}$ y $\cap_{n=1}^{\infty}A_n \in \mathcal{F}$.
+\end{enumerate}
+
+\end{definicion}
+
+De esta manera, podemos restringir nuestra atención únicamente a los eventos que pertenecen a una sigma álgebra.
+
+\begin{ejercicio}
+Demuestre que si $\mathcal{F}$ es una sigma álgebra y $A_n, B_n$, $n=1,2,\ldots$ son una sucesión de eventos de $\mathcal{F}$, entonces el conjunto
+$$
+\left(\cap_{n = 1}^{\infty} A_{n}^{c}  \right) \cup \left(\cup_{n = 1}^{\infty} B_{n}^{c}  \right)
+$$
+pertenece a $\mathcal{F}$.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que si $\mathcal{F}$ satisface las propiedades de la definición \ref{definicion:sigma algebra}, entonces $\Omega \in \mathcal{F}$ y $\emptyset \in \mathcal{F}$.
+\end{ejercicio}
+
+\begin{ejercicio}
+Demuestre que una sigma álgebra es cerrada bajo intersecciones y uniones finitas.
+\end{ejercicio}
 
 \subsection{Medidas de probabilidad}
 %Definición de probabilidad frecuentista (ML a Bayesian pag 11)
