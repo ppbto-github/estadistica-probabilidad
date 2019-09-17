@@ -159,7 +159,53 @@ Demuestre que una sigma álgebra es cerrada bajo intersecciones y uniones finita
 %Definición de medida de probabilidad (Hoel pag 8)
 %Propiedades de una medida de probabildiad (Hoel 10)
 %Fórmula de inclusión y exclusión (prob for ML pag 4)
+A continuación se enuncian dos definiciones de  probabilidad, la primera de ellas se basa fuertemente en la intuición frecuentista, mientras que la segunda está basada en la definición axiomática propuesta por Andrey Kolmogorov (1933)
 
+\begin{definicion}[Probabilidad versión frecuentista]
+\label{definicion:probabilidad frecuentista}
+Sea $\Omega$ un espacio muestral y $\mathcal{F}$ una $\sigma$-álgebra de subconjuntos de $\Omega$. La probabilidad de un evento $A \in \mathcal{F}$, está dada por el límite
+$$
+\mathbb{P}(A) = \lim_{n \rightarrow \infty} \dfrac{n_A}{n}
+$$
+en donde $n$ es el número total de ensayos y $n_A$ es el número de veces que ocurre el evento $A$.
+\end{definicion}
+En la práctica, la definición \ref{definicion:probabilidad frecuentista} se encuentra limitada debido al hecho de que en la realidad $n$ y $n_A$ son números finitos y por lo tanto, lo que realmente se tiene es la aproximación
+$$
+\mathbb{P}(A) \approx \lim_{n \rightarrow \infty} \dfrac{n_A}{n}
+$$
+
+\begin{ejercicio}
+Utilizando la definición \ref{definicion:probabilidad frecuentista}, ¿qué implicaría la probabilidad del evento \textit{La empresa $X$ cae en incumplimiento}, si la empresa $X$ es relativamente joven?
+\end{ejercicio}
+
+\begin{definicion}[Probabilidad versión axiomática]
+Una medida de probabilidad $\mathbb{P}$, definida sobre elementos de una $\sigma$-álgebra $\mathcal{F}$ de subconjuntos de un conjunto $\Omega$, es una función $\mathbb{P}:\mathcal{F} \rightarrow [0,1]$ que cumple lo siguiente:
+
+\begin{enumerate}
+\item $\mathbb{P}(\Omega) = 1$.
+\item $\mathbb{P}(A) \geq 0$ para todo $A \in \mathcal{F}$.
+\item Si $A_n$, $n=1,2,\ldots$ son eventos mutuamente excluyentes (es decir, se tiene que  $A_i \cap A_j = \emptyset$ para $i \neq j$), entonces 
+$$
+\mathbb{P}\left(\cup_{n=1}^{\infty}A_n \right) = \sum_{n=1}^{\infty}\mathbb{P}(A_n)
+$$
+\end{enumerate}
+\end{definicion}
+
+\begin{definicion}[Espacio de probabilidad]
+\label{definicion:espacio de probabilidad}
+Un \textbf{espacio de probabilidad} es una $3$-tupla $\left( \Omega, \mathcal{F}, \mathbb{P} \right)$ en donde $\Omega$ es un conjunto, $\mathcal{F}$ es una sigma álgebra de subconjuntos de $\Omega$ y $\mathbb{P}$ es una medida de probabilidad definida sobre $\mathcal{F}$.
+\end{definicion}
+
+\begin{ejercicio}
+Suponga que el espacio muestral $\Omega$ contiene únicamente un conjunto de $N$ puntos. Suponga además que para todo $\omega \in \Omega$ se tiene que
+$$
+\mathbb{P}(\omega) = \dfrac{1}{N}
+$$
+Si $A$ es un evento tal que $|A| = n$, demuestre que
+$$
+\mathbb{P}(A) = \dfrac{n}{N}
+$$
+\end{ejercicio}
 \subsection{Probabilidad condicional e independencia}
 %Definición de probabilidad condicional
 %teorema 1.4 (prob for ML pag 5)
