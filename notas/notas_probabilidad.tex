@@ -136,7 +136,7 @@ Una colección, $\mathcal{F}$, no vacía de subconjuntos de un conjunto $\Omega$
 
 \end{definicion}
 
-De esta manera, podemos restringir nuestra atención únicamente a los eventos que pertenecen a una sigma álgebra.
+De acuerdo a la definición \ref{definicion:sigma algebra}, podemos restringir nuestra atención únicamente a los eventos que pertenecen a una sigma álgebra.
 
 \begin{ejercicio}
 Demuestre que si $\mathcal{F}$ es una sigma álgebra y $A_n, B_n$, $n=1,2,\ldots$ son una sucesión de eventos de $\mathcal{F}$, entonces el conjunto
@@ -155,6 +155,7 @@ Demuestre que una sigma álgebra es cerrada bajo intersecciones y uniones finita
 \end{ejercicio}
 
 \subsection{Medidas de probabilidad}
+\label{seccion:medidas de probabilidad}
 %Definición de probabilidad frecuentista (ML a Bayesian pag 11)
 %Definición de medida de probabilidad (Hoel pag 8)
 %Propiedades de una medida de probabildiad (Hoel 10)
@@ -206,7 +207,39 @@ $$
 \mathbb{P}(A) = \dfrac{n}{N}
 $$
 \end{ejercicio}
+
+\subsubsection{Propiedades de las medidas de probabilidad}
+
+\begin{teorema}
+\label{teorema:propiedades de las medidas de probabilidad}
+Sea $\left( \Omega, \mathcal{F}, \mathbb{P} \right)$ un espacio de probabilidad. La medida $\mathbb{P}$ tiene las siguientes propiedades:
+
+\begin{enumerate}
+\item Para cualesquiera eventos $A,B$, $\mathbb{P}(B) = \mathbb{P}(A \cap B) + \mathbb{P}(A^c \cap B)$ (demostrar, sugerencia $\Omega = A \cup A^c$).
+
+\item $\mathbb{P}(A^c) = 1 - \mathbb{P}(A)$, en particular $\mathbb{P}(\emptyset) = 1 - \mathbb{P}(\Omega)$ (demostrar, sugerencia utilizar el punto anterior).
+
+\item Si $A \subset B$, entonces $\mathbb{P}(B) \geq \mathbb{P}(A)$ (demostrar).
+
+\item Sean $A_1, A_2, \ldots, A_n$  eventos, entonces 
+\begin{align*}
+\mathbb{P}(\cup_{i=1}^{n}A_i)  = & \sum_{i=1}^{n}\mathbb{P}(A_i) - \sum_{1 \leq i < j \leq n} \mathbb{P}(A_i \cap A_j) \\
++ & \sum_{1 \leq i < j < k \leq n} \mathbb{P}(A_i \cap A_j \cap A_k) \\
+- & \ldots + (-1)^{n + 1}\mathbb{P}(A_1 \cap A_2 \cap \ldots \cap A_n)
+\end{align*}
+
+como consecuencia
+
+$$
+\mathbb{P}(A \cup B) \leq \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
+$$
+
+\end{enumerate}
+
+\end{teorema}
+
 \subsection{Probabilidad condicional e independencia}
+\label{seccion:probabilidad condicional e independencia}
 %Definición de probabilidad condicional
 %teorema 1.4 (prob for ML pag 5)
 %Eventos mutuamente independientes (caso dos eventos y general Hoel pag 19)
