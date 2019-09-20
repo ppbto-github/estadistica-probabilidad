@@ -243,7 +243,60 @@ $$
 %Definición de probabilidad condicional
 %teorema 1.4 (prob for ML pag 5)
 %Eventos mutuamente independientes (caso dos eventos y general Hoel pag 19)
+%Ejemplo 4 pág 15 Hoel, solución analítica y solución de simulación
 %Ejemplo 8 Hoel pag 20
+%Ejercicio 12 Hoel pag 23
+La definición de probabilidad condicional es fácil de motivar utilizando la intuición frecuentista. Supongamos que un experimento es repetido $n$ veces. Si $N_n(A), N_n(B), N_n(A \cap B)$ denotan, respectivamente, el número de veces que ocurrieron los eventos $A, B, A \cap B$, entonces para $n$ lo suficientemente grande $N_n(A)/n, N_n(B)/n, N_n(A \cap B)/n$ aproximan $\mathbb{P}(A), \mathbb{P}(B), \mathbb{P}(A \cap B)$ respectivamente. Dentro de los $N_n(A)$ experimentos en los que el evento $A$ ocurre, el evento $B$ ocurre un número de $N_n(A \cap B)$ veces. Por lo tanto la proporción de veces que ocurre el evento $B$ dado que $A$ también ha ocurrido, está dada por
+$$
+\dfrac{N_n(A \cap B)}{N_n(A)} = \dfrac{N_n(A \cap B) / n}{N_n(A) / n}
+$$
+y para $n$ lo suficientemente grande
+$$
+\dfrac{N_n(A \cap B)}{N_n(A)} \approx \dfrac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+$$
+\begin{definicion}[Probabilidad condicional]
+\label{definicion:probabilidad condicional}
+Sean $A,B$ dos eventos tales que $\mathbb{P}(A) > 0$. La probabilidad condicional de $B$ dado el evento $A$, se define como
+$$
+\mathbb{P}(B | A) = \dfrac{\mathbb{P}(B \cap A) }{\mathbb{P}(A)}
+$$
+\end{definicion}
+Las probabilidades condicionales pueden interpretarse como una actualización del espacio muestral $\Omega$ debido al arribo de nueva información.
+
+\begin{ejemplo}
+Supongamos que tenemos una caja con $r$ esferas rojas etiquetadas $1,2,\ldots,r$ y $b$ esferas negras etiquetadas $1,2,\ldots,b$. Supongamos que las esferas son equiprobables. Si elegimos una esfera de la caja y sabemos que es de color rojo, ¿cuál es la probabilidad de que tenga la etiqueta $1$?
+\\ \textbf{Solución:}\\
+Dado que sabemos que la bola es roja, nuestra espacio muestral original $\Omega$ se reduce al nuevo espacio $\Omega{'}$, el cual está compuesto únicamente por las $r$ bolas rojas. Ya que estas bolas son equiprobables, se tiene que la probabilidad de tener la etiqueta $1$ es $\tfrac{1}{r}$.
+\end{ejemplo}
+
+\begin{ejercicio}
+Resuelva el ejemplo anterior utilizando la definición \ref{definicion:probabilidad condicional}.
+\end{ejercicio}
+
+\begin{ejercicio}
+Supongamos que la población de una ciudad está compuesta por $40\%$ hombres y $60\%$ mujeres. Supongamos también que $50\%$ de los hombres y $30\%$ de las mujeres fuman. Encuentre la probabilidad de que un fumador sea hombre.
+\end{ejercicio}
+
+\begin{teorema}[Propiedades de la probabilidad condicional]
+\label{teorema:propiedades probabilidad condicional}
+La probabilidad condicional cumple las siguientes propiedades:
+\begin{enumerate}[label=\alph*)]
+\item (\textbf{Fórmula de la probabilidad total}) Si $A_1, \ldots, A_k$ forman una partición del espacio muestral $\Omega$, es decir, $A_i \cap A_j = \emptyset$ para $i \neq j$ y $\cup_{i=1}^{k}A_i = \Omega$ y si $0 < \mathbb{P}(A_i) < 1$ para toda $i$, entonces para todo evento $B$
+$$
+\mathbb{P}(B) = \sum_{i=1}^{k}\mathbb{P}(B|A_i)\mathbb{P}(A_i)
+$$
+
+\item Sean $A_1, \ldots, A_k$ eventos cualesquiera, entonces
+\begin{align*}
+\mathbb{P}(A_1 \cap A_2 \cap \ldots \cap A_k)  = & \mathbb{P}(A_1)\mathbb{P}(A_2|A_1)\mathbb{P}(A_3|A_1 \cap A_2)\ldots \\
+ \times & \mathbb{P}(A_k|A_1 \cap A_2 \cap \ldots \cap A_{k-1})
+\end{align*}
+\end{enumerate}
+\end{teorema}
+\begin{ejercicio}
+Demuestre el teorema \ref{teorema:propiedades probabilidad condicional}.
+\end{ejercicio}
+
 
 \chapter{Variables aleatorias}
 \label{capitulo:variables aleatorias}
