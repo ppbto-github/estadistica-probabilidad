@@ -198,14 +198,13 @@ Un \textbf{espacio de probabilidad} es una $3$-tupla $\left( \Omega, \mathcal{F}
 \end{definicion}
 
 \begin{ejercicio}
-Suponga que el espacio muestral $\Omega$ contiene únicamente un conjunto de $N$ puntos. Suponga además que para todo $\omega \in \Omega$ se tiene que
-$$
-\mathbb{P}(\omega) = \dfrac{1}{N}
-$$
-Si $A$ es un evento tal que $|A| = n$, demuestre que
-$$
-\mathbb{P}(A) = \dfrac{n}{N}
-$$
+Sea $(\Omega, \mathcal{F}, \mathbb{P})$ un espacio de probabilidad tal que $\mathbb{P}$ asigna a cada punto de $\Omega$ una misma probabilidad $p > 0$.
+\begin{enumerate}[label=\alph*)]
+\item Demuestre que $\Omega$ tiene un número finito de puntos.\\ \textbf{sugerencia:} Demuestre que $\Omega$ no puede tener más de $p^{-1}$ puntos.
+
+\item Demuestre que si $|\Omega| = n$, entonces $p = \dfrac{1}{n}$.
+\end{enumerate}
+
 \end{ejercicio}
 
 \subsubsection{Propiedades de las medidas de probabilidad}
@@ -285,6 +284,15 @@ La probabilidad condicional cumple las siguientes propiedades:
 $$
 \mathbb{P}(B) = \sum_{i=1}^{k}\mathbb{P}(B|A_i)\mathbb{P}(A_i)
 $$
+Utilizando este resultado, puede obtenerse la \textbf{fórmula de Bayes}
+$$
+\mathbb{P}(A_i|B) = \dfrac{\mathbb{P}(A_i) \mathbb{P}(B|A_i) }{\sum_{j=1}^{k} \mathbb{P}(A_j) \mathbb{P}(B|A_j)}
+$$
+
+Puede obtenerse también lo siguiente:
+$$
+\mathbb{P}(B) = \mathbb{P}(B|A)\mathbb{P}(A) + \mathbb{P}(B|A^c)\mathbb{P}(A^c)
+$$
 
 \item Sean $A_1, \ldots, A_k$ eventos cualesquiera, entonces
 \begin{align*}
@@ -296,7 +304,23 @@ $$
 \begin{ejercicio}
 Demuestre el teorema \ref{teorema:propiedades probabilidad condicional}.
 \end{ejercicio}
+\begin{ejercicio}
+Supongamos que tenemos una moneda $A$ que cae en cara con probabilidad $s$ y una moneda $B$ que cae en cara con probabilidad $t$. Si cada moneda se tira de manera alternada, empezando con la moneda $A$, ¿cuál es la probilidad de que la primera cara se obtenga con la moneda $A$?
+\end{ejercicio}
 
+\begin{definicion}[Independencia de eventos]
+\label{definicion:independencia de eventos}
+Una colección de eventos $A_1, \ldots, A_n$ se dice que es \textbf{mutuamente independiente} si para cada $k, 1 \leq k \leq n$, y cualesquiera $k$ eventos, $A_{i_1}, \ldots A_{i_k}$, se tiene que $\mathbb{P}(A_{i_1} \cap \ldots A_{i_k}) = \mathbb{P}(A_{i_1}) \times \ldots \times \mathbb{P}(A_{i_k})$.
+En particular, dos eventos son independientes si
+$$
+\mathbb{P}(A \cap B) = \mathbb{P}(A)\mathbb{P}(B)
+$$ 
+\end{definicion}
+Utilizando la probabilidad condicional, para dos eventos independientes tenemos que
+$$
+\mathbb{P}(B|A) = \dfrac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)} = \mathbb{P}(B)
+$$
+es decir, la ocurrencia del evento $A$ no afecta el resultado del evento $B$.
 
 \chapter{Variables aleatorias}
 \label{capitulo:variables aleatorias}
@@ -317,6 +341,7 @@ Demuestre el teorema \ref{teorema:propiedades probabilidad condicional}.
 %Distribuciones condicionales
 %Ejemplo curse of dimensionality (prob for ML pag 131)
 %Ejercicio esperanza condicional minimiza error cuadrático medio
+
 
 \section{Caso discreto}
 \label{seccion:variables discretas}
