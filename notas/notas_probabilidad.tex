@@ -342,9 +342,43 @@ es decir, la ocurrencia del evento $A$ no afecta el resultado del evento $B$.
 %Ejemplo curse of dimensionality (prob for ML pag 131)
 %Ejercicio esperanza condicional minimiza error cuadrático medio
 
+Recordemos que el espacio muestral $\Omega$, contiene todos los resultados posibles de un experimento. Para cada uno de estos posibles resultados, $\omega$, una variable aleatoria asigna un valor (generalmente numérico), es decir, una variable aleatoria, $X$, es realmente una función $X: \Omega \rightarrow \mathbb{R}$, o $X: \Omega \rightarrow \mathbb{R}^n$.
+
+La definición formal (es decir, desde el punto de vista de la teoría de la medida) de una variable aleatoria está dada por
+
+\begin{definicion}[Variable aleatoria caso real]
+\label{definicion: variable aleatoria caso real}
+Dado un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$, una \textbf{variable aleatoria} es una función $X$ de $\Omega$ a los números reales $\mathbb{R}$ tal que
+$$
+X(]\infty, x])^{-1} = \{\omega  \in \Omega: X(\omega) \leq x  \} \in \mathcal{F}, \medspace \mbox{para todo } x \in \mathbb{R}
+$$
+\end{definicion}
+\begin{nota}
+\label{nota: notacion probabilidades}
+Se utilizará la siguiente notación
+$$
+\mathbb{P}[X(]\infty, x])^{-1}] :=\mathbb{P}[X \leq x]
+$$
+de manera similar para los otros eventos.
+\end{nota}
 
 \section{Caso discreto}
 \label{seccion:variables discretas}
+\begin{definicion}[Variable aleatoria discreta, caso real]
+Una variable aleatoria \textbf{discreta} con valores sobre el conjunto $\mathbb{R}$, es una función de $\Omega$ sobre un subconjunto finito o numerable infinito $\{x_1, x_2, \ldots\}$ de números reales, de tal manera que $\{\omega: X(\omega) = x_i \} \in \mathcal{F}$ para toda $i$.
+\end{definicion}
+
+Cada variable aleatoria discreta $X$, tiene asociada una función $f$ llamada la \textbf{función de densidad} (o masa).
+
+\begin{definicion}[Función de densidad, caso discreto]
+Sea $X$ una variable aleatoria discreta con valores en $\mathbb{R}$. Si $f$ es una función tal que:
+\begin{enumerate}[label=\alph*)]
+\item $f(x) = \mathbb{P}(X = x) \geq 0$ para todo $x \in \mathbb{R}$.
+\item El conjunto $A = \{x: f(x) \neq 0 \}$ es un subconjunto finito o numerable infinito de $\mathbb{R}$.
+\item $\sum_{x \in A} f(x) = 1$.
+\end{enumerate}
+entonces decimos que $f$ es una función de densidad de $X$.
+\end{definicion}
 
 \section{Caso continuo}
 \label{seccion:variables continuas}
