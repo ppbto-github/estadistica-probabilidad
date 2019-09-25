@@ -367,10 +367,10 @@ de manera similar para los otros eventos.
 \begin{definicion}[Variable aleatoria discreta, caso real]
 Una variable aleatoria \textbf{discreta} con valores sobre el conjunto $\mathbb{R}$, es una función de $\Omega$ sobre un subconjunto finito o numerable infinito $\{x_1, x_2, \ldots\}$ de números reales, de tal manera que $\{\omega: X(\omega) = x_i \} \in \mathcal{F}$ para toda $i$.
 \end{definicion}
-
-Cada variable aleatoria discreta $X$, tiene asociada una función $f$ llamada la \textbf{función de densidad} (o masa).
+Cada variable aleatoria discreta, $X$, tiene asociada una función, $f$, llamada la \textbf{función de densidad} (o función de masa).
 
 \begin{definicion}[Función de densidad, caso discreto]
+\label{definicion:funcion de densidad, caso discreto}
 Sea $X$ una variable aleatoria discreta con valores en $\mathbb{R}$. Si $f$ es una función tal que:
 \begin{enumerate}[label=\alph*)]
 \item $f(x) = \mathbb{P}(X = x) \geq 0$ para todo $x \in \mathbb{R}$.
@@ -380,6 +380,56 @@ Sea $X$ una variable aleatoria discreta con valores en $\mathbb{R}$. Si $f$ es u
 entonces decimos que $f$ es una función de densidad de $X$.
 \end{definicion}
 
+Es posible asignar una variable aleatoria a cada función que satisface las condiciones de la definición \ref{definicion:funcion de densidad, caso discreto}. Es decir, podemos construir un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$ y una variable $X$ definida sobre $\Omega$ cuya densidad sea $f$. Sea $\{x_1, x_2, \ldots \}$ el conjunto de valores para los cuales $f(x) \neq 0$. Definamos $\Omega = \{x_1, x_2, \ldots \}$, $\mathcal{F} = \mathcal{P}(\Omega)$ (el conjunto potencia de $\Omega$) y $\mathbb{P}$ la medida de probabilidad definida sobre $\mathcal{F}$ como $\mathbb{P}( \{\omega \} ) = f(x_i)$ si $\omega = x_i$. Si definimos $X$ como $X(\omega) = x_i$ si $\omega = x_i$, entonces
+$$
+\mathbb{P}(X = x_i) = \mathbb{P}(\{\omega: X(\omega) = x_i \}) = \mathbb{P}(\{x_i\}) = f(x_i)
+$$
+
+Sea $A \subseteq \mathbb{R}$ y sea $X$ una variable aleatoria discreta con posibles valores $x_1, x_2, \ldots$. Entonces el conjunto $\{\omega: X(\omega) \in A  \}$ es un evento, esto se debe a que
+$$
+\{\omega: X(\omega) \in A  \} = \bigcup_{x_i \in A} \{\omega: X(\omega) = x_i \}
+$$
+\begin{nota}
+Es común utilizar la siguiente notación
+$$
+\{\omega: X(\omega) \in A  \} = \{X \in A\}
+$$
+\end{nota}
+
+Podemos calcular $\mathbb{P}(X \in A)$ utilizando la siguiente fórmula
+$$
+\mathbb{P}(X \in A) = \sum_{x_i \in A}f(x_i)
+$$
+
+\begin{ejercicio}
+Demuestre que 
+$$
+\mathbb{P}(X \in A) = \sum_{x_i \in A}f(x_i)
+$$
+\end{ejercicio}
+
+\begin{definicion}[Función de distribución acumulativa, caso discreto]
+\label{definicion:funcion de distribucion caso discreto}
+La función $F(t), -\infty < t < \infty$ definida por
+$$
+F(t) = \mathbb{P}(X \leq t) = \sum_{x \leq t} f(x)
+$$
+recibe el nombre de \textbf{función de distribución acumulativa} (o simplemente función de distribución) de la variable aleatoria discreta $X$.
+\end{definicion}
+
+\begin{teorema}[Propiedades de la función de distribución]
+\label{teorema: propiedades de la funcion de distribucion}
+Sea $X:\Omega \rightarrow \mathbb{R}$, una variable aleatoria. Una función $F(x)$ es la función de distribución de $X$ si y sólo si satisface las siguientes condiciones:
+\begin{enumerate}[label=\alph*)]
+\item Para toda $x \in \mathbb{R}$, $0 \leq F(x) \leq 1$.
+\item $F(x) \rightarrow 0$ cuando $x \rightarrow -\infty$, y  $F(x) \rightarrow 1$ cuando $x \rightarrow \infty$.
+\item Dado un número real $a$, $F(x) \downarrow F(a)$ cuando $x \downarrow a$ (continuidad por la derecha).
+\item Para cualesquiera dos números reales $x < y$, $F(x) \leq F(y)$.
+\end{enumerate}
+\end{teorema}
+\begin{nota}
+El teorema \ref{teorema: propiedades de la funcion de distribucion}, es válido para cualquier tipo de variables con valores en los reales (discretas, continuas o mixtas).
+\end{nota}
 \section{Caso continuo}
 \label{seccion:variables continuas}
 
