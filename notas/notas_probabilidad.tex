@@ -377,7 +377,7 @@ Sea $X$ una variable aleatoria discreta con valores en $\mathbb{R}$. Si $f$ es u
 \item El conjunto $A = \{x: f(x) \neq 0 \}$ es un subconjunto finito o numerable infinito de $\mathbb{R}$.
 \item $\sum_{x \in A} f(x) = 1$.
 \end{enumerate}
-entonces decimos que $f$ es una función de densidad de $X$.
+entonces decimos que $f$ es una función de densidad (o función de masa) de $X$.
 \end{definicion}
 
 Es posible asignar una variable aleatoria a cada función que satisface las condiciones de la definición \ref{definicion:funcion de densidad, caso discreto}. Es decir, podemos construir un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$ y una variable $X$ definida sobre $\Omega$ cuya densidad sea $f$. Sea $\{x_1, x_2, \ldots \}$ el conjunto de valores para los cuales $f(x) \neq 0$. Definamos $\Omega = \{x_1, x_2, \ldots \}$, $\mathcal{F} = \mathcal{P}(\Omega)$ (el conjunto potencia de $\Omega$) y $\mathbb{P}$ la medida de probabilidad definida sobre $\mathcal{F}$ como $\mathbb{P}( \{\omega \} ) = f(x_i)$ si $\omega = x_i$. Si definimos $X$ como $X(\omega) = x_i$ si $\omega = x_i$, entonces
@@ -395,7 +395,6 @@ $$
 \{\omega: X(\omega) \in A  \} = \{X \in A\}
 $$
 \end{nota}
-
 Podemos calcular $\mathbb{P}(X \in A)$ utilizando la siguiente fórmula
 $$
 \mathbb{P}(X \in A) = \sum_{x_i \in A}f(x_i)
@@ -430,6 +429,131 @@ Sea $X:\Omega \rightarrow \mathbb{R}$, una variable aleatoria. Una función $F(x
 \begin{nota}
 El teorema \ref{teorema: propiedades de la funcion de distribucion}, es válido para cualquier tipo de variables con valores en los reales (discretas, continuas o mixtas).
 \end{nota}
+
+\begin{ejemplo}
+Considere un juego de baraja inglesa. Si $X$ denota el número de ases en una mano, encuentre la función de densidad y la función de distribución de $X$.\\
+\textbf{Solución:}\\
+Utilizando argumentos de cálculo combinatorio tenemos que:
+$$
+\mathbb{P}(X = x) = \dfrac{\begin{pmatrix} 4 \\ x
+\end{pmatrix} \begin{pmatrix} 48 \\ 13 - x \end{pmatrix}} { \begin{pmatrix} 52 \\ 13\end{pmatrix} }
+$$
+para $x =0,1,2,3,4$.
+Utilizando la función de densidad, podemos calcular la función de distribución acumulativa de la siguiente manera:
+$$
+\begin{array}{lcr}
+F(x) & = & 0 \medspace \mbox{ Si } x < 0.\\
+ & = & f(0) \medspace \mbox{ Si } 0\leq x < 1\\
+ & = & f(0) + f(1) \medspace \mbox{ Si } 1\leq x < 2\\
+ & = & f(0) + f(1) + f(2) \medspace \mbox{ Si } 2\leq x < 3\\
+ & = & f(0) + f(1) + f(2) + f(3) \medspace \mbox{ Si } 3\leq x < 4\\
+ & = & 1 \medspace \mbox{ Si } x \geq 4.
+\end{array}
+$$
+\end{ejemplo}
+
+\begin{proposicion}[Función de una variable aleatoria]
+\label{proposicion:funcion de una variable aleatoria}
+Sea $X$ una variable aleatoria discreta y sea $Y = g(X)$. Entonces
+$$
+\mathbb{P}(Y = y) = \sum_{x: g(x) = y} \mathbb{P}(X = x)
+$$
+\end{proposicion}
+
+\begin{ejercicio}
+Si $X$ tiene función de densidad
+$$
+f(x) = \dfrac{c}{1 + x^2}
+$$
+para $x = 0, \pm 1, \pm 2, \pm 3$. Encuentre el valor de $c$ y la función de densidad de
+$$
+Y = sen\left( \dfrac{\pi}{2}X \right)
+$$
+\end{ejercicio}
+
+\subsection{Esperanza y momentos}
+El concepto de esperanza de una variable aleatoria está relacionado con la idea de promediar los posibles valores que la variable puede tomar. En lugar de utilizar un promedio común, en donde a cada posible valor se le da la misma ponderación, las ponderaciones son asignadas a través de la función de densidad de la variable.
+
+\begin{definicion}[Esperanza, caso discreto]
+\label{definicion:esperanza caso discreto}
+Sea $X$ una variable aleatoria discreta. Si $\sum_{i} |x_i|f(x_i) < \infty$, definimos la esperanza (media) de $X$ como
+$$
+\mu = E[X] = \sum_{i}x_if(x_i)
+$$
+\end{definicion}
+
+\begin{teorema}[Propiedades de la esperanza]
+\label{teorema:propiedades de la esperanza}
+La esperanza cumple lo siguiente:
+\begin{enumerate}[label=\alph*)]
+\item Si $\mathbb{P}(X = c) = 1$ para una constante $c$, entonces $E[X] = c$.
+\item Si $X,Y$ son variables aleatorias definidas sobre el mismo espacio $\Omega$, ambas con esperanza finita y si $\mathbb{P}(X \leq Y) = 1$, entonces $E[X] \leq E[Y]$.
+\item Si $X$ tiene esperanza finita y si $\mathbb{P}(X \geq c) = 1$, entonces $E[X] \geq c$. De la misma forma, si $\mathbb{P}(X \leq c) = 1$, entonces $E[X] \leq c$.
+\item $|E[X]| \leq E[|X|]$.
+\item Si $Y = g(X)$, entonces $E[Y] = \sum_{i}g(x_i)f(x_i)$.
+\item Si $X_1, X_2, \ldots, X_n$ son variables aleatorias definidas sobre el mismo espacio $\Omega$, con esperanza finita y si $c_1, \ldots, c_n$ son constantes, entonces
+$$
+E\left[ \sum_{i=1}^{n}c_{i}X_i \right] = \sum_{i=1}^{n}c_iE[X_i]
+$$
+\end{enumerate}
+\end{teorema}
+
+\begin{ejercicio}
+Demuestre que si $X$ es una variable aleatoria que toma los valores $0,1,2,\ldots$ y con esperanza finita, entonces
+$$
+E[X] = \sum_{n=0}^{\infty} \mathbb{P}(X > n)
+$$
+\end{ejercicio}
+La esperanza se calcula con la intención de entender el valor típico de la variable aleatoria. Sin embargo, esta cantidad no nos dice nada sobre la variabilidad de los mismos. Una de las medidas más utilizadas para cuantificar esta variabilidad es la varianza, la cual se define a continuación.
+
+\begin{definicion}[Varianza de una variable aleatoria]
+Sea $X$ una variable con media finita. La varianza de $X$ se define como
+$$
+\sigma^2 = Var[X] =  E[(X - \mu)^2]
+$$
+La desviación estándar de $X$ se define como $\sigma = \sqrt{\sigma^2}$.
+\end{definicion}
+
+\begin{proposicion}[Propiedades de la varianza]
+\label{proposicion:propiedades de la varianza}
+La varianza cumple lo siguiente:
+\begin{enumerate}[label=\alph*)]
+\item Para toda constante $c \in \mathbb{R}$, $Var(cX) = c^2Var(X)$.
+\item Para toda constante $c \in \mathbb{R}$, $Var(X + c) = Var(X)$.
+\item $Var(X) \geq 0$, para toda variable aleatoria $X$. La igualdad se cumple sólo si $\mathbb{P}(X = c)=1$ para algún número $c$ constante.
+\item $Var(X) = E(X^2) - (E[X])^2$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{ejercicio}
+Demuestre la proposición \ref{proposicion:propiedades de la varianza}.
+\end{ejercicio}
+
+\begin{definicion}[K-ésimo momento]
+Sea $X$ una variable aleatoria y $k \geq 1$ un entero. El k-ésimo momento de $X$ está dado por $E[X^k]$.
+\end{definicion}
+
+\begin{definicion}[Sesgo y curtosis]
+Sea $X$ una variable aleatoria con $E[|X|^3]<\infty$. El sesgo de $X$ se define como
+$$
+\dfrac{E[(X- \mu)^3]}{\sigma^3}.
+$$
+Supongamos que $E[X^4] < \infty$. La curtosis de $X$ está dada por
+$$
+\dfrac{E[(X - \mu)^4]}{\sigma^4} - 3.
+$$
+\end{definicion}
+El sesgo es utilizado como una medida de asimetría en la distribución de los valores de la variable aleatoria. Si la variable $X$ tiene una distribución simétrica, entonces todos los momentos impares alrededor de la media, $E[(X - \mu)^{2k + 1}]$ serán iguales a cero, en particular, el sesgo será igual a cero.
+
+Por otro lado, la curtosis de una variable nos indica que tan concentrada (puntiaguda por así decirlo) es la distribución de los valores alrededor de la media.
+
+\begin{definicion}[Variables independientes]
+Sean $X_1, X_2,\ldots,X_k$ variables aleatorias definidas sobre el mismo espacio $\Omega$. Decimos que las variables $X_1, X_2,\ldots,X_k$ son independientes si
+$$
+\mathbb{P}(X_1 = x1, X_2 = x_2, \ldots, X_k = x_k) = \mathbb{P}(X_1 = x_2)\mathbb{P}(X_2 = x_2)\ldots\mathbb{P}(X_k = x_k).
+$$
+\end{definicion}
+
 \section{Caso continuo}
 \label{seccion:variables continuas}
 
