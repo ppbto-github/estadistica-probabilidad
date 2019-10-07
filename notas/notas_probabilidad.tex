@@ -430,6 +430,16 @@ Sea $X:\Omega \rightarrow \mathbb{R}$, una variable aleatoria. Una función $F(x
 El teorema \ref{teorema: propiedades de la funcion de distribucion}, es válido para cualquier tipo de variables con valores en los reales (discretas, continuas o mixtas).
 \end{nota}
 
+\begin{ejercicio}
+%Hoel pág 110
+Demuestre que para cualesquiera numeros $a \leq b$
+$$
+\mathbb{P}(a < X \leq b) = F(b) - F(a)
+$$
+\textbf{Sugerencia:} Considere los conjuntos $A = \{ \omega: X(\omega) \leq a\}, B = \{\omega: X(\omega) \leq b\}$ y recuerde que para todo conjunto $A$
+$$\mathbb{P}(A) = \mathbb{P}(A \cap B) + \mathbb{P}(A \cap B^c).$$
+\end{ejercicio}
+
 \begin{ejemplo}
 Considere un juego de baraja inglesa. Si $X$ denota el número de ases en una mano, encuentre la función de densidad y la función de distribución de $X$.\\
 \textbf{Solución:}\\
@@ -548,67 +558,6 @@ El sesgo es utilizado como una medida de asimetría en la distribución de los v
 
 Por otro lado, la curtosis de una variable nos indica que tan concentrada (puntiaguda por así decirlo) es la distribución de los valores alrededor de la media.
 
-\begin{definicion}[Covarianza y coeficiente de variación]
-\label{definicion:covarianza}
-Sean $X,Y$ dos variables aleatorias con esperanza finita, la covarianza de $X$ y $Y$ está dada por
-$$
-Cov(X,Y) = E[(X - \mu_{X})(Y - \mu_{Y})]
-$$
-La covarianza busca medir el grado de dependencia (lineal) entre dos variables, sin embargo, al ser una cantidad no acotada y que depende de las unidades de las variables involucradas, su interpretación es difícil. Una forma de solucionar es a través del coeficiente de variación, el cual se define como
-$$
-\rho(X,Y) = \dfrac{ Cov(X,Y)  }{ \sqrt{Var(X) Var(Y)} }.
-$$
-Utilizando la desigualdad de Schwarz es fácil ver que $-1\leq \rho(X,Y) \leq 1$.
-\end{definicion}
-
-
-\begin{ejercicio}
-Demuestre que $Cov(X,Y) = E[XY] - E[X]E[Y]$.
-\end{ejercicio}
-
-\begin{definicion}[Variables independientes]
-Sean $X_1, X_2,\ldots,X_k$ variables aleatorias definidas sobre el mismo espacio $\Omega$. Decimos que las variables $X_1, X_2,\ldots,X_k$ son independientes si
-$$
-\mathbb{P}(X_1 = x1, X_2 = x_2, \ldots, X_k = x_k) = \mathbb{P}(X_1 = x_2)\mathbb{P}(X_2 = x_2)\ldots\mathbb{P}(X_k = x_k).
-$$
-\end{definicion}
-
-\begin{ejercicio}
-Suponga que $X,Y$ son variables aleatorias independientes con funciones de densidad $f_x, f_y$ respectivamente. Demuestre que para cualesquiera subconjuntos $A,B \in \mathcal{F}$, se tiene que
-$$
-\mathbb{P}(X \in A, Y \in B) = \mathbb{P}(X \in A)\mathbb{P}(Y \in B)
-$$
-\end{ejercicio}
-
-\begin{ejercicio}
-Suponga que las variables $X_1, X_2, \ldots, X_n$ son variables independientes con esperanza finita. Demuestre la igualdad
-$$
-E[\Pi_{i=1}^{n}X_i] = \Pi_{i=1}^{n}E[X_i].
-$$
-En particular, si $X,Y$ son independientes, $Cov(X,Y) = 0$.
-\end{ejercicio}
-
-\begin{ejercicio}
-Sean $X,Y$ variables aleatorias independientes.
-\begin{enumerate}[label=\alph*)]
-\item Encuentre la distribución de $\min(X,Y)$.
-\item Encuentre la distribución de $\max(X,Y)$.
-\item Encuentre $\mathbb{P}(\min(X,Y) = X) = \mathbb{P}(Y \geq X)$.
-\item Encuentre la distribución de $X + Y$.
-\end{enumerate}
-\end{ejercicio}
-
-\begin{ejercicio}
-Suponga que las variables $X_1, X_2, \ldots, X_n$ son independientes. Demuestre
-$$
-Var(X_1 + X_2 + \ldots + X_n) = \sum_{i=1}^{n}Var(X_i).
-$$
-\textbf{Sugerencia:} Demuestre primero el caso con dos variables.
-\end{ejercicio}
-
-\begin{ejercicio}
-Sean $X_1, X_2, \ldots, X_n$ variables independientes con varianza común $\sigma^2 < \infty$. Sea $\bar{X} = \dfrac{\sum_{i=1}^{n} X_i }{n}$, demuestre que $Var(\bar{X}) = \dfrac{\sigma^2}{n}$.
-\end{ejercicio}
 
 \subsection{Distribuciones discretas más comúnes}
 \label{seccion: distribuciones discretas}
@@ -678,6 +627,141 @@ $$
 \end{enumerate}
 \section{Caso continuo}
 \label{seccion:variables continuas}
+Una variable aleatoria continua, toma valores en subintervalos o dentro de conjuntos generados por subintervalos de $\mathbb{R}$. Algunos ejemplos de variables aleatorias continuas son:
+\begin{itemize}
+\item Precio de un instrumento financiero.
+\item Tiempo para que una compañía caiga en incumplimiento de sus obligaciones contractuales.
+\item Número de veces que una acción presenta ganancias en un intervalo de tiempo dado.
+\item Rendimientos de un portafolio.
+\end{itemize}
+
+\begin{definicion}[Variable aleatoria, caso continuo]
+\label{definicion: Variable aleatoria caso continuo}
+Una variable, $X$, sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$ es una función $X:\Omega \rightarrow \mathbb{R}$ tal que para toda $x \in \mathbb{R}$ se tiene que
+$$
+\{ \omega \in \Omega: X(\omega) \leq x \} \in \mathcal{F}
+$$
+es decir, el conjunto $\{ \omega \in \Omega: X(\omega) \leq x \}$ es un evento.
+\end{definicion}
+Al igual que en el caso discreto, la función de distribución de una variable aleatoria continua, es la función, $F$, tal que 
+$$
+F(x) = \mathbb{P}(X \leq x)
+$$
+\begin{ejercicio}
+%Hoel pag 110
+Considere el experimento de elegir un punto al azar dentro del disco de radio $R$ centrado en el origen. Sea $X$ la variable aleatoria que denota la distancia entre el punto elegido y el origen. Encuentre la función de distribución de $X$.
+\end{ejercicio}
+
+\begin{teorema}
+Una variable aleatoria, $X$, es una variable aleatoria continua si y sólo si su función de distribución, $F$, es continua en todo punto $x$.
+\end{teorema}
+Como consecuencia del teorema anterior, tenemos que para cualesquiera números $a \leq b$.
+$$
+\mathbb{P}(a < X < b) = \mathbb{P}(a \leq X \leq b) = \mathbb{P}(a \leq X < b)
+$$
+
+\begin{definicion}[Función de densidad, caso continuo]
+\label{definicion:funcion de densidad caso continuo}
+Una funcióin de densidad (con respecto a la integración) es una función no negativa, $f\geq 0$, tal que 
+$$
+\int_{-\infty}^{\infty} f(x)dx = 1
+$$
+Observemos que si $f$ es una función de densidad, entonces la función, $F$, definida por
+$$
+F(x) = \int_{- \infty}^{x} f(y)dy, \qquad -\infty < x < \infty.
+$$
+es una función de distribución.
+
+No todas las funciones de distribución tienen asociadas una función de densidad, aquellas que sí la tienen son llamadas \textbf{absolutamente continuas}.
+\end{definicion}
+
+De lo anterior, se sigue que para una variable aleatoria continua $X$ con densidad $f$
+$$
+\mathbb{P}(a \leq X \leq b) = \int_{a}^{b}f(x)dx
+$$
+o de manera más general, si $A$ es la unión (numerable) de intervalos disjuntos
+$$
+\mathbb{P}(X \in A) = \int_{A}f(x)dx.
+$$
+
+Finalmente, es importante señalar que si $F$ es absolutamente continua, la densidad $f$ no es única, ya que puede ser modificada en un conjunto finito de puntos (de manera más general, cualquier conjunto de medida cero) sin alterar el valor de la integral.
+
+\begin{teorema}[Teorema de cambio de variable]
+\label{teorema:cambio de variable}
+Sea $\psi$ una función derivable, estrictamente creciente o decreciente sobre un intervalo $I$ y sea $\psi(I)$ el rango de $\psi$. Sea $X$ una función aleatoria continua $X$ con densidad $f$, tal que $f(x) = 0$ para $x \notin I$. Entonces $Y = \psi(X)$ tiene densidad $g$ dada por $g(y) = 0$ para $y \notin \psi(I)$ y 
+$$
+g(y) = f(\psi^{-1}(y)) \left| \dfrac{d}{dy}\psi{-1}(y)\right|, \qquad y \in \psi(I).
+$$
+\end{teorema}
+
+\begin{demostracion}
+content...
+\end{demostracion}
+
+\chapter{Variables aleatorias multivariadas}
+\label{capitulo:variables aleatorias multivariadas}
+\begin{definicion}[Covarianza y coeficiente de variación]
+\label{definicion:covarianza}
+Sean $X,Y$ dos variables aleatorias con esperanza finita, la covarianza de $X$ y $Y$ está dada por
+$$
+Cov(X,Y) = E[(X - \mu_{X})(Y - \mu_{Y})]
+$$
+La covarianza busca medir el grado de dependencia (lineal) entre dos variables, sin embargo, al ser una cantidad no acotada y que depende de las unidades de las variables involucradas, su interpretación es difícil. Una forma de solucionar es a través del coeficiente de variación, el cual se define como
+$$
+\rho(X,Y) = \dfrac{ Cov(X,Y)  }{ \sqrt{Var(X) Var(Y)} }.
+$$
+Utilizando la desigualdad de Schwarz es fácil ver que $-1\leq \rho(X,Y) \leq 1$.
+\end{definicion}
+
+
+\begin{ejercicio}
+Demuestre que $Cov(X,Y) = E[XY] - E[X]E[Y]$.
+\end{ejercicio}
+
+\begin{definicion}[Variables independientes]
+Sean $X_1, X_2,\ldots,X_k$ variables aleatorias definidas sobre el mismo espacio $\Omega$. Decimos que las variables $X_1, X_2,\ldots,X_k$ son independientes si
+$$
+\mathbb{P}(X_1 = x1, X_2 = x_2, \ldots, X_k = x_k) = \mathbb{P}(X_1 = x_2)\mathbb{P}(X_2 = x_2)\ldots\mathbb{P}(X_k = x_k).
+$$
+\end{definicion}
+
+\begin{ejercicio}
+Suponga que $X,Y$ son variables aleatorias independientes con funciones de densidad $f_x, f_y$ respectivamente. Demuestre que para cualesquiera subconjuntos $A,B \in \mathcal{F}$, se tiene que
+$$
+\mathbb{P}(X \in A, Y \in B) = \mathbb{P}(X \in A)\mathbb{P}(Y \in B)
+$$
+\end{ejercicio}
+
+\begin{ejercicio}
+Suponga que las variables $X_1, X_2, \ldots, X_n$ son variables independientes con esperanza finita. Demuestre la igualdad
+$$
+E[\Pi_{i=1}^{n}X_i] = \Pi_{i=1}^{n}E[X_i].
+$$
+En particular, si $X,Y$ son independientes, $Cov(X,Y) = 0$.
+\end{ejercicio}
+
+\begin{ejercicio}
+Sean $X,Y$ variables aleatorias independientes.
+\begin{enumerate}[label=\alph*)]
+\item Encuentre la distribución de $\min(X,Y)$.
+\item Encuentre la distribución de $\max(X,Y)$.
+\item Encuentre $\mathbb{P}(\min(X,Y) = X) = \mathbb{P}(Y \geq X)$.
+\item Encuentre la distribución de $X + Y$.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{ejercicio}
+Suponga que las variables $X_1, X_2, \ldots, X_n$ son independientes. Demuestre
+$$
+Var(X_1 + X_2 + \ldots + X_n) = \sum_{i=1}^{n}Var(X_i).
+$$
+\textbf{Sugerencia:} Demuestre primero el caso con dos variables.
+\end{ejercicio}
+
+\begin{ejercicio}
+Sean $X_1, X_2, \ldots, X_n$ variables independientes con varianza común $\sigma^2 < \infty$. Sea $\bar{X} = \dfrac{\sum_{i=1}^{n} X_i }{n}$, demuestre que $Var(\bar{X}) = \dfrac{\sigma^2}{n}$.
+\end{ejercicio}
+
 
 
 
