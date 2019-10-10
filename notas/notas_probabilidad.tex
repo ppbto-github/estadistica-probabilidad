@@ -695,8 +695,53 @@ $$
 \end{teorema}
 
 \begin{demostracion}
-content...
+Sean $F$ y $G$ las funciones de distribución de $X$ y $Y$ respectivamente. Primero supongamos que $\psi$ es estrictamente creciente, por lo tanto, $\psi{-1}$ también es estrictamente creciente sobre $\psi(I)$ y para $y \in \psi(I)$
+$$
+\begin{array}{lll}
+G(y) & = & \mathbb{P}(Y \leq y)\\
+ & = & \mathbb{P}(\psi(X) \leq y) \\
+ & = & \mathbb{P}(X \leq \psi^{-1}(y))\\
+ & = & F(\psi^{-1}(y)).
+\end{array}
+$$
+Derivando respecto a $y$, se obtiene
+$$
+\begin{array}{lll}
+G^{'}(y) & = & \dfrac{d}{dy}F(\psi^{-1}(y))\\
+& = & F^{'}(\psi^{-1}(y))\dfrac{d}{dy}\psi^{-1}(y)\\
+& = & f(\psi{-1}(y))\dfrac{d}{dy}\psi{-1}(y).
+\end{array}
+$$
+Y como
+$$
+\dfrac{d}{dy}\psi^{-1}(y) = \left| \dfrac{d}{dy}\psi{-1}(y) \right| \qquad \mbox{¿por qué?}
+$$
+se tiene que le ecuación se cumple.
+
+Ahora supongamos que $\psi$ es estrictamente decreciente, por lo tanto también lo es $\psi^{-1}$, para $y \in \psi(I)$ tenemos
+$$
+\begin{array}{lcl}
+G(y) & = & \mathbb{P}(Y \leq y) \\
+& = & \mathbb{P}(\psi(X) \leq y) \\
+& = & \mathbb{P}(X \geq \psi^{-1}(y)) \qquad \mbox{¿por qué?} \\
+& = & 1 - F(\psi^{-1}(y)).
+\end{array}
+$$
+Derivando respecto a $y$
+$$
+\begin{array}{lcl}
+G^{'}(y) & = & -F^{'}(\psi{-1}(y))\dfrac{d}{dy}\psi{-1}(y)\\
+& = & f(\psi^{-1}(y))\left( - \dfrac{d}{dy} \psi^{-1}(y)  \right) \\
+ & = & f(\psi^{-1}(y))\left| \dfrac{d}{dy} \psi^{-1}(y)  \right| \qquad \mbox{¿por qué?}. 
+\end{array}
+$$
+lo que finaliza la demostración $\qed$.
 \end{demostracion}
+
+\begin{ejercicio}
+%Hoel pág 117
+Sea $X$ una variable aleatoria continua con densidad $f$. Encuentre la densidad de $Y = X^2$.
+\end{ejercicio}
 
 \chapter{Variables aleatorias multivariadas}
 \label{capitulo:variables aleatorias multivariadas}
