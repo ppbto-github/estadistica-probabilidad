@@ -146,7 +146,7 @@ En la definición \ref{definicion:espacio-vectorial}, para evitar cargar la nota
 \begin{ejercicio}
 \label{ejemplo:espacio-vectorial-tuplas}
 Sea $\mathbb{V} = \mathbb{F}^n$, el conjunto de $n-$tuplas con elementos de un campo \mbb{F}. Sean $\bm{a} = (a_1,\ldots,a_n)$ y $\bm{b} = (b_1,\ldots,b_n)$ vectores de \mbb{V}, con $a_i, b_i \in \mathbb{F}$ para toda $i$.
-Si definimos $\bm{a} + \bm{b} = (a_1 + b_1, \ldots, a_n + b_n)$ y para $c \in \mathbb{F}$, $c\bm{a} = (ca_1,\ldots,ca_n)$.
+Definimos $\bm{a} + \bm{b} = (a_1 + b_1, \ldots, a_n + b_n)$ y para $c \in \mathbb{F}$, $c\bm{a} = (ca_1,\ldots,ca_n)$.
 Además el elemento $\bm{0} \in \mathbb{V}$ se define como $(0,\ldots,0)$.\newline
 Demuestre que \mbb{V} es un espacio vectorial sobre el campo \mbb{F}, en particular $\mathbb{R}^n$ es un espacio vectorial sobre \mbb{R}.
 \end{ejercicio}
@@ -247,7 +247,7 @@ Demuestre que el conjunto de vectores del ejercicio \ref{ejercicio:Base-e} forma
 \label{seccion:dimension-espacio}
 \begin{definicion}[Dimensión de un espacio vectorial]
 \label{definicion:dimension-espacio}
-Sea $\mathcal{B} = \{\bm{v_1},\ldots, \bm{v_n}  \}$ una base para el espacio vectorial \mbb{V}, tal que $\left| \mathcal{B} \right| = n < \infty$. Entonces decimos que la dimensión de \mbb{V}, $dim(\mathbb{V})$ es igual a $n$. En otras palabras, la dimensión de un espacio vectorial, es el número de vectores linealmente independientes, necesarios para generar dicho espacio.
+Sea $\mathcal{B} = \{\bm{v_1},\ldots, \bm{v_n}  \}$ una base para el espacio vectorial \mbb{V}, tal que $\left| \mathcal{B} \right| = n < \infty$. Entonces decimos que la dimensión de \mbb{V}, denotada como $dim(\mathbb{V})$, es igual a $n$. En otras palabras, la dimensión de un espacio vectorial, es el número de vectores linealmente independientes, necesarios para generar dicho espacio.
 \end{definicion}
 
 Si un espacio \mbb{V} tiene una base, $\mathcal{B}$, cuya cardinalidad no es finita, decimos que la dimensión de \mbb{V} es infinita.
@@ -262,13 +262,13 @@ Sea \mbb{V} un espacio vectorial sobre un campo \mbb{F}. Sea $\bm{v_1}, \ldots, 
 \begin{demostracion}
 La idea de la demostración es la siguiente:
 
-Se supone que $\bm{w_1}, \ldots, \bm{w_n}$ son linealmente independientes, por lo tanto $\bm{w_i} \neq 0$, para todo $i$ y además 
+Se supone que $\bm{w_1}, \ldots, \bm{w_n}$ son linealmente independientes, por lo tanto $\bm{w_i} \neq \bm{0}$, para todo $i$ y además 
 $$\bm{w_1} = a_{1}\bm{v_1} + \ldots + a_{m}\bm{v_m}$$
 con algún $a_i \neq 0$. Sin pérdida de generalidad (ya que es posible volver a numerar los $\bm{v_i}$) supongamos que $a_1 \neq 0$, tenemos entonces que existen escalares $a_{i}^{'}$ tales que:
 $$\bm{v_1} = a_{1}^{'}\bm{w_1} + a_{2}^{'}\bm{v_2} + \ldots + a_{m}^{'} \bm{v_m}$$
 Utilizando el mismo argumento para
 $$\bm{w_2} = b_{1}\bm{v_1} + \ldots + b_{m}\bm{v_m}$$
-podemos expresar $\bm{v_2}$ como una combinación lineal de $\bm{w_1}, \bm{w_2}, \bm{v_3}, \ldots, \bm{w_m}$. Continuando de la misma forma podemos expresar $\bm{v_1}, \ldots, \bm{v_m}$ como combinación de $\bm{w_1}, \ldots, \bm{w_m}$. Ya que los $\bm{v_i}$ generan \mbb{V}, se sigue que los $\bm{w_i}$ también generan este espacio y por lo tanto, como $n > m$, se tiene que existen escalares $c_i$ tales que:
+podemos expresar $\bm{v_2}$ como una combinación lineal de $\bm{w_1}, \bm{w_2}, \bm{v_3}, \ldots, \bm{v_m}$. Continuando de la misma forma podemos expresar $\bm{v_1}, \ldots, \bm{v_m}$ como combinación de $\bm{w_1}, \ldots, \bm{w_m}$. Ya que los $\bm{v_i}$ generan \mbb{V}, se sigue que los $\bm{w_i}$ también generan este espacio y por lo tanto, como $n > m$, se tiene que existen escalares $c_i$ tales que:
 $$\bm{w_n} = c_{1}\bm{w_1} + \ldots + c_{m}\bm{w_m}$$
 con lo que llegamos a una contradicción con nuestro supuesto inicial de independencia lineal entre $\bm{w_1}, \ldots \bm{w_n}$. $\qed$
 \end{demostracion}
@@ -593,7 +593,6 @@ a_{21}x_1 + \ldots + a_{2n}x_n & = & 0 \\
 a_{m1}x_1 + \ldots + a_{mn}x_n & = & 0
 \end{array}
 $$
-
 Este sistema siempre tiene una solución, conocida como \textbf{solución trivial} ¿cuál es?
 \end{definicion}
 
@@ -624,7 +623,6 @@ b_m
 $$
 o denotando a la $j-$ésima columna de $\bm{A}$ como $\bm{a_{j}}$ y al vector (columna) $(b_1, \ldots, b_m)^{T}$ como $\bm{b}$
 $$ x_1\bm{a_{1}} + \ldots + x_n \bm{a_{n}} = \bm{b}.$$
-
 En el caso de un sistema homogéneo, la existencia de una solución no trivial implica una dependencia lineal entre los vectores formados por las columnas de la matriz $\bm{A}.$
  
 \begin{teorema}
@@ -694,7 +692,6 @@ Si una matriz es singular, entonces al menos uno de sus renglones (o columnas) e
 \begin{ejercicio}
 Demuestre que si $\bm{A}$ es una matriz invertible, entonces su inversa es única.
 \end{ejercicio}
-
 Para poder encontrar la inversa de una matriz, es necesario primero definir lo que es el determinante de una matriz.
 
 \begin{definicion}[Determinante - matriz \matdim{2}{2}]
@@ -829,7 +826,7 @@ $$ ||\bm{v}|| = \sqrt{\left< v, v \right>}.$$
 \end{definicion}
 
 \begin{ejercicio}
-En el caso del producto punto, ¿cuál es la expresión de la norma de un vector? De acuerdo a esta expresión, de una expresión, en términos de la norma, para la distancia euclidiana en $\mathbb{R}^n$. 
+En el caso del producto punto, ¿cuál es la expresión de la norma de un vector? De acuerdo a esta expresión, dé una expresión, en términos de la norma, para la distancia euclidiana en $\mathbb{R}^n$. 
 \end{ejercicio}
 
 \begin{proposicion}
@@ -868,17 +865,14 @@ $$ \bm{w} = \dfrac{\bm{v}}{||\bm{v}||}.$$
 \begin{definicion}[Vectores ortogonales y paralelos]
 Decimos que dos vectores son \textbf{ortogonales} si 
 $$ \left<\bm{v}, \bm{w} \right> = 0.$$
-
 Si
 $$ \left<\bm{v}, \bm{w} \right> = ||\bm{v}|| \medspace ||\bm{w}||$$
-
 decimos que son \textbf{paralelos}. En otras palabras, dos vectores son paralelos si uno es múltiplo de otro (ver desigualdad de Cauchy-Schwarz).
 \end{definicion}
 
 
 \begin{definicion}[Conjunto ortonormales]
 Sea $\mathcal{X} = \{\bm{v_1}, \ldots, \bm{v_n} \}$ un conjunto de vectores distintos del vector cero. Decimos que el conjunto $\mathcal{X}$ es un \textbf{conjunto ortogonal} si $\left< \bm{v_i}, \bm{v_j} \right> = 0$ para todo $i \neq j$.
-
 Si además tenemos que $||\bm{v_i}|| = 1$ para toda $i$, entonces decimos que $\mathcal{X}$ es un \textbf{conjunto ortonormal}.
 \end{definicion}
 
@@ -909,6 +903,7 @@ Nosotros hacemos distinción entre matrices ortogonales y ortonormales, en la li
 \end{nota}
 
 \begin{teorema}
+\label{teorema: matrices ortonormales}
 Sea $\bm{A}$ una matriz de \matdim{n}{n}. Entonces los siguientes puntos son equivalentes:
 
 \begin{enumerate}[label=\roman*)]
@@ -916,9 +911,11 @@ Sea $\bm{A}$ una matriz de \matdim{n}{n}. Entonces los siguientes puntos son equ
 \item $\bm{A}^{T} \bm{A} = \bm{I} = \bm{A} \bm{A}^{T}.$
 \item Los renglones de $\bm{A}$ son vectores ortonormales.
 \end{enumerate}
-
 Por lo tanto, para una matriz ortonormal, tenemos que $\bm{A}^{-1} = \bm{A}^{T}.$
 \end{teorema}
+\begin{ejercicio}
+Demuestre el teorema \ref{teorema: matrices ortonormales}.
+\end{ejercicio}
 
 \chapter{Valores y vectores característicos}
 \label{chapter:eigen}
@@ -963,7 +960,7 @@ Demuestre que si una matriz, $\bm{A}$, de tamaño \matdim{n}{n}, tiene menos de 
 \end{ejercicio}
 
 \begin{ejercicio}
-Si $\bm{U}$ es una matriz triangular superior, encuentre sus valores característicos y de un posible vector característico asociado a cada uno de ellos.
+Si $\bm{U}$ es una matriz triangular superior, encuentre sus valores característicos y dé un posible vector característico asociado a cada uno de ellos.
 \end{ejercicio}
 
 \begin{teorema}[Propiedades de valores y vectores característicos]
@@ -982,7 +979,7 @@ $$ tr(\bm{A}) = \sum_{i = 1}^{n} a_{ii}.$$
 
 \item Si $\bm{A}$ es una matriz \textbf{simétrica} sobre el campo \mbb{R}, entonces todos sus valores característicos pertenecen a \mbb{R}.
 
-\item Si $\bm{x}_1$ y $\bm{x}_2$ son dos vectores característicos de una matriz real simétrica $\bm{A}$ y $\lambda_1, \lambda_2$ son sus respectivos valores característicos. Entonces $\bm{x}_1$ y $\bm{x}_2$ son ortogonales (utilizando el producto punto como producto escalar). (Demostrar)
+\item Si $\bm{x}_1$ y $\bm{x}_2$ son dos vectores característicos, distintos, de una matriz real simétrica $\bm{A}$ y $\lambda_1, \lambda_2$ son sus respectivos valores característicos. Entonces $\bm{x}_1$ y $\bm{x}_2$ son ortogonales (utilizando el producto punto como producto escalar). (Demostrar)
 \end{enumerate}
 
 \end{teorema}
