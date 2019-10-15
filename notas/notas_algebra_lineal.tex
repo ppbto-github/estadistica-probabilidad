@@ -22,7 +22,7 @@
 
 %opening
 \title{Módulo 2: Álgebra lineal}
-\author{David R. Montalván Hernández}
+\author{David R. Montalván Hernández \\ david.montalvan@itam.mx}
 \date{}
 
 %=========Define los ambientes a utilizar =======%
@@ -826,7 +826,7 @@ $$ ||\bm{v}|| = \sqrt{\left< v, v \right>}.$$
 \end{definicion}
 
 \begin{ejercicio}
-En el caso del producto punto, ¿cuál es la expresión de la norma de un vector? De acuerdo a esta expresión, dé una expresión, en términos de la norma, para la distancia euclidiana en $\mathbb{R}^n$. 
+En el caso del producto punto, ¿cuál es la expresión de la norma de un vector? De acuerdo a esta expresión, dé una expresión, en términos de la norma, para la distancia euclidiana en $\mathbb{R}^n$ entre dos vectores. 
 \end{ejercicio}
 
 \begin{proposicion}
@@ -1008,7 +1008,7 @@ El \textbf{rango de las columnas} de una matriz $\bm{A}$, es el número de colum
 El \textbf{rango de los renglones} de una matriz $\bm{A}$, es el número de renglones de $\bm{A}$ que son linealmente independientes.
 \end{definicion}
 
-De acuerdo a la definición \ref{definicion:rango de una matriz}, el rango de una matriz es una medida de redundancia, una matriz son un rango bajo (pocos renglones o columnas linealmente independientes) indica que la información contenida en ella es redundante. De acuerdo a lo anterior, una matriz no singular no tiene redundancia
+De acuerdo a la definición \ref{definicion:rango de una matriz}, el rango de una matriz es una medida de redundancia, una matriz con un rango bajo (pocos renglones o columnas linealmente independientes) indica que la información contenida en ella es redundante. De acuerdo a lo anterior, una matriz no singular no tiene redundancia
 
 
 \begin{teorema}[Descomposición por valores singulares]
@@ -1165,7 +1165,7 @@ Ya que cada columna de $\bm{X}$ está estandarizada (media cero y desviación es
 
 $$ \bm{V} = \dfrac{1}{m} \bm{X}^{T} \bm{X}.$$
 
-Utilizando los valores propios de la matriz $\bm{V}$, ordenados de forma decreciente, $\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$, podemos formar la matriz diagonal $\bm{D}$. Además podemos formar la matriz ortogonal (ver teorema \ref{teorema:propiedades eigenvalues}) $\bm{W}$, cuya columna $i$ corresponde al vector característico correspondiente a $\lambda_i$. La matriz de componentes principales, $\bm{P}$, es una matriz de \matdim{m}{n} resultado del siguiente producto:
+Utilizando los valores propios de la matriz $\bm{V}$, ordenados de forma decreciente, $\lambda_1 \geq \lambda_2 \geq \ldots \geq \lambda_n$, podemos formar la matriz diagonal $\bm{D}$. Además podemos formar la matriz ortogonal, $\bm{W}$, cuya columna $i$ corresponde al vector característico correspondiente a $\lambda_i$. La matriz de componentes principales, $\bm{P}$, es una matriz de \matdim{m}{n} resultado del siguiente producto:
 
 $$ \bm{P} = \bm{XW}.$$
 
