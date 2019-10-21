@@ -21,8 +21,8 @@
 
 
 %opening
-\title{Módulo 2: Estadística y probabilidad con python \newline Probabilidad}
-\author{David R. Montalván Hernández}
+\title{Módulo 2: Probabilidad}
+\author{David R. Montalván Hernández \\ david.montalvan@itam.mx}
 \date{}
 
 %=========Define los ambientes a utilizar =======%
@@ -74,13 +74,13 @@
 \renewcommand{\contentsname}{Contenido}
 \tableofcontents
 \renewcommand{\listfigurename}{Lista de imágenes}
-\listoffigures
+%\listoffigures
 \renewcommand{\listtablename}{Lista de tablas}
 \renewcommand\tablename{Tabla}
 \renewcommand{\bibname}{Referencias}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\chaptername}{Capítulo}
-\listoftables
+%\listoftables
 
 \chapter{Conceptos básicos de probabilidad}
 \pagenumbering{arabic}
@@ -304,7 +304,19 @@ $$
 \begin{ejercicio}
 Demuestre el teorema \ref{teorema:propiedades probabilidad condicional}.
 \end{ejercicio}
+
 \begin{ejercicio}
+%Prob for ML ex 1.4 pag 6
+Se tienen dos urnas. La primera de ellas tiene $a$ esferas rojas y $b$ esferas negras, la otra urna contiene $c$ esferas rojas y $d$ negras.
+Si se elige una esfera de cada urna y de estas dos esferas se elige alguna al azar, ¿cuál es la probabilidad de que la esfera sea roja?
+Calcule la probabilidad considerando
+$$
+a = 99, b = 1, c = 1, d = 1
+$$
+\end{ejercicio}
+
+\begin{ejercicio}
+%Prob for ML ex 1.5 pag 6
 Supongamos que tenemos una moneda $A$ que cae en cara con probabilidad $s$ y una moneda $B$ que cae en cara con probabilidad $t$. Si cada moneda se tira de manera alternada, empezando con la moneda $A$, ¿cuál es la probilidad de que la primera cara se obtenga con la moneda $A$?
 \end{ejercicio}
 
@@ -423,7 +435,7 @@ Sea $X:\Omega \rightarrow \mathbb{R}$, una variable aleatoria. Una función $F(x
 \item Para toda $x \in \mathbb{R}$, $0 \leq F(x) \leq 1$.
 \item $F(x) \rightarrow 0$ cuando $x \rightarrow -\infty$, y  $F(x) \rightarrow 1$ cuando $x \rightarrow \infty$.
 \item Dado un número real $a$, $F(x) \downarrow F(a)$ cuando $x \downarrow a$ (continuidad por la derecha).
-\item Para cualesquiera dos números reales $x < y$, $F(x) \leq F(y)$.
+\item Para cualesquiera dos números reales $x < y$, $F(x) \leq F(y)$ (monótona creciente).
 \end{enumerate}
 \end{teorema}
 \begin{nota}
@@ -513,6 +525,25 @@ Demuestre que si $X$ es una variable aleatoria que toma los valores $0,1,2,\ldot
 $$
 E[X] = \sum_{n=0}^{\infty} \mathbb{P}(X > n)
 $$
+\end{ejercicio}
+
+\begin{ejercicio}
+%Prob for ML pag 15 Ex 1.14
+Sea $X$ una variable aleatoria con función de densidad
+$$
+\mathbb{P}[X = x] = \dfrac{1}{x(x + 1)}
+$$
+para $x=1,2,3,\ldots$.
+Demuestre que $E[X]$ no existe.
+\end{ejercicio}
+
+\begin{ejercicio}
+%Hoel pag 104 Ex 5
+Suponga que $X$ y $Y$ son variables aleatorias tales que
+$$
+\mathbb{P}(|X - Y| \leq M) = 1
+$$
+para alguna constante $M$. Suponga que $E[Y] < \infty$ y demuestre que $X$ tiene esperanza finita y $|E[X] - E[Y]| \leq M$.
 \end{ejercicio}
 La esperanza se calcula con la intención de entender el valor típico de la variable aleatoria. Sin embargo, esta cantidad no nos dice nada sobre la variabilidad de los mismos. Una de las medidas más utilizadas para cuantificar esta variabilidad es la varianza, la cual se define a continuación.
 
@@ -635,18 +666,6 @@ Una variable aleatoria continua, toma valores en subintervalos o dentro de conju
 \item Rendimientos de un portafolio.
 \end{itemize}
 
-\begin{definicion}[Variable aleatoria, caso continuo]
-\label{definicion: Variable aleatoria caso continuo}
-Una variable, $X$, sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$ es una función $X:\Omega \rightarrow \mathbb{R}$ tal que para toda $x \in \mathbb{R}$ se tiene que
-$$
-\{ \omega \in \Omega: X(\omega) \leq x \} \in \mathcal{F}
-$$
-es decir, el conjunto $\{ \omega \in \Omega: X(\omega) \leq x \}$ es un evento.
-\end{definicion}
-Al igual que en el caso discreto, la función de distribución de una variable aleatoria continua, es la función, $F$, tal que 
-$$
-F(x) = \mathbb{P}(X \leq x)
-$$
 \begin{ejercicio}
 %Hoel pag 110
 Considere el experimento de elegir un punto al azar dentro del disco de radio $R$ centrado en el origen. Sea $X$ la variable aleatoria que denota la distancia entre el punto elegido y el origen. Encuentre la función de distribución de $X$.
@@ -690,7 +709,7 @@ Finalmente, es importante señalar que si $F$ es absolutamente continua, la dens
 \label{teorema:cambio de variable}
 Sea $\psi$ una función derivable, estrictamente creciente o decreciente sobre un intervalo $I$ y sea $\psi(I)$ el rango de $\psi$. Sea $X$ una función aleatoria continua $X$ con densidad $f$, tal que $f(x) = 0$ para $x \notin I$. Entonces $Y = \psi(X)$ tiene densidad $g$ dada por $g(y) = 0$ para $y \notin \psi(I)$ y 
 $$
-g(y) = f(\psi^{-1}(y)) \left| \dfrac{d}{dy}\psi{-1}(y)\right|, \qquad y \in \psi(I).
+g(y) = f(\psi^{-1}(y)) \left| \dfrac{d}{dy}\psi^{-1}(y)\right|, \qquad y \in \psi(I).
 $$
 \end{teorema}
 
@@ -743,7 +762,95 @@ lo que finaliza la demostración $\qed$.
 Sea $X$ una variable aleatoria continua con densidad $f$. Encuentre la densidad de $Y = X^2$.
 \end{ejercicio}
 
+\begin{ejercicio}
+%Hoel pag 119
+Sea $X$ una variable aleatoria uniformemente distribuida en el intervalo $(0,1)$, esto quiere decir que $F_X(x) = x$ para $x \in (0,1)$. Encuentre la función de densidad de $Y = - \dfrac{1}{\lambda} Ln (1 - X)$ para $\lambda > 0$.
+\end{ejercicio}
+
+\begin{ejercicio}[Método de la transformada inversa]
+%Hoel pag 131 sección 5.4
+Sea $X$ una variable aleatoria continua con función de distribución $F$ y densidad $f$. Utilizando el teorema \ref{teorema:cambio de variable}, encuentre la distribución de $Y = F(X)$.
+De acuerdo a lo obtenido, ¿cómo generaría un número aleatoria con la misma distribución de $X$ a partir de un número con la misma distribución de $Y$?
+\end{ejercicio}
+
+\begin{ejercicio}
+Sea $X$ una variable aleatoria continua positiva, con densidad $f$. Encuentre una fórmula para la densidad de $Y = \dfrac{1}{X + 1}$.
+\end{ejercicio}
+
+\begin{ejercicio}
+Sea $X$ una variable aleatoria, $g$ una función de densidad y $\phi$ una función derivable y estrictamente creciente sobre $(-\infty, \infty)$. Supongamos que
+$$
+\mathbb{P}(X \leq x) = \int_{-\infty}^{\phi(x)} g(z)dx, \qquad -\infty < x <\infty.
+$$
+Demuestre que $Y = \phi(X)$ tiene densidad $g$.
+\end{ejercicio}
+
+\subsection{Distribuciones continuas comunes}
+\label{seccion:Distribuciones continuas comunas}
+\begin{enumerate}[label=\alph*)]
+\item \textbf{Uniforme} $U(a,b)$
+$a,b \in \mathbb{R}$, $a < b$.
+$$
+f(x) = \dfrac{1}{b-a}, \qquad a\leq x \leq b.
+$$
+$$
+E[X] = \dfrac{a + b}{2}; \qquad Var[X] = \dfrac{(b - a)^2}{12}.
+$$
+
+\item \textbf{Exponencial} $Exp(\lambda)$
+$\lambda > 0$.
+$$
+f(x) = \dfrac{1}{\lambda} e^{\frac{-x}{\lambda} }, \qquad x >0.
+$$
+$$
+E[X^n] = \lambda^{n}n!, \qquad n \geq 1. \qquad \mbox{(Tarea: Calcule Var[X])}
+$$
+
+\item \textbf{Gama} $Gama(k, \theta)$
+$k>0$: Parámetro de forma, $\theta>0$: Parámetro de escala.
+$$
+f(x) = \dfrac{1}{\Gamma(k) \theta^{k}} x^{k - 1} e^{-\frac{x}{\theta}}, \qquad x>0.
+$$
+$$
+\Gamma(k) = \int_{0}^{\infty}e^{-x}x^{k-1}dx.
+$$
+$$
+E[X] = k\theta, Var[X] = k\theta^{2}.
+$$
+
+\item \textbf{Cauchy} $Caucy(x_0, \gamma > 0)$. $x_0 \in \mathbb{R}$: Parámetro de localización, $\gamma > 0$: Parámetro de escala.
+$$
+f(x) = \dfrac{1}{\pi \gamma \left[ 1 + \left( \dfrac{x - x_0}{\gamma} \right)^2 \right] }, \qquad x\in \mathbb{R}.
+$$
+$$
+E[X]= \mbox{No definida}.
+$$
+
+\item \textbf{Beta} $Beta(\alpha, \beta)$. $\alpha, \beta > 0$.
+$$
+f(x) = \dfrac{x^{\alpha - 1} (1 - x)^{\beta - 1}} {B(\alpha, \beta)}, \qquad 0 \leq x \leq 1.
+$$
+$$
+B(\alpha, \beta) = \int_{0}^{1}x^{\alpha - 1}(1 - x)^{\beta - 1}dx.
+$$
+$$
+E[X] = \dfrac{\alpha}{ \alpha + \beta}, Var[X] = \dfrac{\alpha \beta}{ (\alpha + \beta)^2 (\alpha + \beta + 1)  }.
+$$
+
+\item \textbf{Normal} $N(\mu, \sigma)$. $\mu \in \mathbb{R}$: Parámetro de localización, $\sigma > 0$: Parámetro de escala.
+$$
+f(x) = \dfrac{1}{\sigma \sqrt{2 \pi} } e^{- \dfrac{ (x - \mu)^2 }{2 \sigma^2} }, \qquad -\infty < x < \infty.
+$$
+$$
+E[X] = \mu, Var[X] = \sigma^2.
+$$
+\end{enumerate}
+
 \chapter{Variables aleatorias multivariadas}
+%Desigualdades.
+%Profundizar en la distribución normal.
+%Distribución de sumas.
+%Distribución de muestras.
 \label{capitulo:variables aleatorias multivariadas}
 \begin{definicion}[Covarianza y coeficiente de variación]
 \label{definicion:covarianza}
@@ -807,7 +914,7 @@ $$
 Sean $X_1, X_2, \ldots, X_n$ variables independientes con varianza común $\sigma^2 < \infty$. Sea $\bar{X} = \dfrac{\sum_{i=1}^{n} X_i }{n}$, demuestre que $Var(\bar{X}) = \dfrac{\sigma^2}{n}$.
 \end{ejercicio}
 
-
+%\chapter{Teoría de la información}
 
 
 \end{document}
